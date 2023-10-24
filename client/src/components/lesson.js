@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header.js';
 import Listen from './listen.js';
 import Section from './section.js';
+import Next from './next.js';
 
 const Lesson = () => {
   return (
@@ -10,6 +11,7 @@ const Lesson = () => {
         <Header />
         <Listen />
         <Section />
+        <Next />
     </div>
   );
 };
