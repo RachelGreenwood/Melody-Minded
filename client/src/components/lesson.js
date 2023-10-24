@@ -25,12 +25,7 @@ const Lesson = () => {
   return (
     <div>
         <h2>Lesson is present</h2>
-        {lessons.map((lesson) => {
-            return (
-                <p>Lesson title: {lesson.title}</p>
-            )
-        })}  
-        <Header />
+        <Header lessons={lessons} />
         <Listen />
         <Section />
         <Next />
