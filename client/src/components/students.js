@@ -11,7 +11,7 @@ function Students(props) {
 
   const loadStudents = () =>{
     // A function to fetch the list of students that will be load anytime that list change
-    fetch("/api/students")
+    fetch("http://localhost:3000/api/students")
       .then((response) => response.json())
       .then((students) => {
             setStudents(students);
