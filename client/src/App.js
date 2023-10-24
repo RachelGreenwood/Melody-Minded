@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import AuthenticationButton from './components/authentication-button';
 import Navbar from './components/navbar.js';
 import Lesson from './components/lesson.js';
+import Forum from "./components/forum";
 
 function App() {
 
@@ -56,12 +57,13 @@ function App() {
   return (
     <div id="app" className="d-flex flex-column h-100">
       <h2> Welcome to Melody Minded! </h2>
-      <p>Data from users table: {users[0].username}</p>
+      {/* <p>Data from users table: {users[0].username}</p>
       <p>Data from comments table: {comments[0].comment}</p>
-      <p>Data from lessons table: {lessons[0].title}</p>
+      <p>Data from lessons table: {lessons[0].title}</p> */}
       <AuthenticationButton />
       <Navbar />
       <Lesson />
+      <Forum />
       <div className="container flex-grow-1">
       {!user ? <span>Hello from Techtonica From DEV!!!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
