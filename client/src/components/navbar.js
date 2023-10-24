@@ -20,7 +20,14 @@ const Navbar = () => {
 
   return (
     <div>
-        <h2>Navbar is present</h2>       
+        <h2>Navbar is present</h2>
+        {lessons.map((lesson) => {
+            return (
+                <button key={lesson.id}>
+                    <p>{lesson.title}</p>
+                </button>
+            )
+        })}        
     </div>
   );
 };
