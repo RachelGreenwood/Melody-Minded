@@ -5,6 +5,8 @@ import Loading from "./components/loading";
 import { Route, Routes, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AuthenticationButton from './components/authentication-button';
+import Navbar from './components/navbar.js';
+import Lesson from './components/lesson.js';
 
 function App() {
 
@@ -58,6 +60,8 @@ function App() {
       <p>Data from comments table: {comments[0].comment}</p>
       <p>Data from lessons table: {lessons[0].title}</p>
       <AuthenticationButton />
+      <Navbar />
+      <Lesson />
       <div className="container flex-grow-1">
       {!user ? <span>Hello from Techtonica From DEV!!!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
