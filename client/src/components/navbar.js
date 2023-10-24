@@ -21,6 +21,7 @@ const Navbar = () => {
   return (
     <div>
         <h2>Navbar is present</h2>
+        {/* TODO: route buttons to lesson pages/forum page */}
         {lessons.map((lesson) => {
             return (
                 <button key={lesson.id}>
@@ -28,6 +29,7 @@ const Navbar = () => {
                 </button>
             )
         })}        
+        <button>Forum</button>
     </div>
   );
 };
