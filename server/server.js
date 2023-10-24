@@ -31,6 +31,23 @@ app.get('/users', async (req, res) => {
   }
 });
 
+app.post("/users", async (req, res) => {
+  try {
+    console.log("In the server", req.body);
+    const { username, email, password, photo, lessons_completed } = req.body;
+    const result = await db.query(
+      "INSERT INTO users (username, email, password, photo, lessons_completed) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+        [username, email, password, photo, lessons_completed]
+    );
+    let dbResponse = result.rows[0];
+    console.log(dbResponse);
+    res.json(dbResponse);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({err});
+  }
+});
+
 app.get('/comments', async (req, res) => {
   try {
     const { rows: comments } = await db.query('SELECT * FROM comments');
