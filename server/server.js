@@ -59,6 +59,23 @@ app.get('/comments', async (req, res) => {
   }
 });
 
+app.post("/comments", async (req, res) => {
+  try {
+    console.log("In the server", req.body);
+    const { poster, datetime, comment } = req.body;
+    const result = await db.query(
+      "INSERT INTO comments (poster, datetime, comment) VALUES ($1, $2, $3) RETURNING *",
+        [poster, datetime, comment]
+    );
+    let dbResponse = result.rows[0];
+    console.log(dbResponse);
+    res.json(dbResponse);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({err});
+  }
+});
+
 app.get('/lessons', async (req, res) => {
   try {
     const { rows: lessons } = await db.query('SELECT * FROM lessons');
