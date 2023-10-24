@@ -5,6 +5,8 @@ function Students(props) {
   let user = props.user;
   // this is my original state with an array of students 
   const [students, setStudents] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [lessons, setLessons] = useState([]);
 
   // New State to contro the existing student Id that the user wants to edit
   const [editStudentId, setEditStudentId] = useState(null);
@@ -18,8 +20,18 @@ function Students(props) {
           });
   }
 
+  const loadComments = () =>{
+    // A function to fetch the list of students that will be load anytime that list change
+    fetch("/comments")
+      .then((response) => response.json())
+      .then((comments) => {
+            setComments(comments);
+          });
+  }
+
   useEffect(() => {
     loadStudents();
+    loadComments();
   }, []);
 
   //A function to handle the Delete funtionality
@@ -71,8 +83,8 @@ function Students(props) {
   return (
     <div className="students">
       <h2> List of Students </h2>
-      {console.log(students[0])}
       {students[0].username}
+      {comments[0].comment}
       {!user ? (<h4>Please signup to add students to our DB </h4>) : (<Form saveStudent={addStudent} />)}
       
     </div>
