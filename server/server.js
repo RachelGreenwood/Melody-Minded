@@ -42,6 +42,17 @@ app.get('/comments', async (req, res) => {
   }
 });
 
+app.get('/lessons', async (req, res) => {
+  try {
+    const { rows: lessons } = await db.query('SELECT * FROM lessons');
+    console.log("Get in the server", lessons);
+    res.send(lessons);
+  } catch(err) {
+    console.log(err);
+    return res.status(400).json({err});
+  }
+});
+
 // create the get request
 // app.get('/api/students', cors(), async (req, res) => {
 //   // const STUDENTS = [

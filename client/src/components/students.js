@@ -29,9 +29,19 @@ function Students(props) {
           });
   }
 
+  const loadLessons = () =>{
+    // A function to fetch the list of students that will be load anytime that list change
+    fetch("/lessons")
+      .then((response) => response.json())
+      .then((lessons) => {
+            setLessons(lessons);
+          });
+  }
+
   useEffect(() => {
     loadStudents();
     loadComments();
+    loadLessons();
   }, []);
 
   //A function to handle the Delete funtionality
@@ -85,6 +95,7 @@ function Students(props) {
       <h2> List of Students </h2>
       {students[0].username}
       {comments[0].comment}
+      {lessons[0].title}
       {!user ? (<h4>Please signup to add students to our DB </h4>) : (<Form saveStudent={addStudent} />)}
       
     </div>
