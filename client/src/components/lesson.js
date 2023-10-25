@@ -27,7 +27,7 @@ const Lesson = () => {
         <h2>Lesson is present</h2>
         <Header lessons={lessons} />
         <Listen />
-        <Section />
+        <Section lessons={lessons} />
         <Next />
     </div>
   );
