@@ -96,6 +96,18 @@ app.put("/comments/:id", async (req, res) => {
   }
 })
 
+app.delete("/comments/:id", async (req, res) => {
+  try {
+    const commentId = req.params.id;
+    const deleteOperation = await db.query("DELETE FROM comments WHERE id=$1", [commentId]);
+    console.log(deleteOperation);
+    res.status(200).end();
+  } catch (e) {
+    console.error(e);
+    res.status(400).json({e});
+  }
+});
+
 app.get('/lessons', async (req, res) => {
   try {
     const { rows: lessons } = await db.query('SELECT * FROM lessons');
