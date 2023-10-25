@@ -76,6 +76,26 @@ app.post("/comments", async (req, res) => {
   }
 });
 
+app.put("/comments/:id", async (req, res) => {
+  try {
+    const commentId = req.params.id;
+    const { poster, datetime, comment } = req.body;
+    const result = await db.query(
+      "UPDATE comments SET poster = $1, datetime = $2, comment = $3 WHERE id = $4 RETURNING *",
+      [poster, datetime, comment, commentId]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+    let updatedComment = result.rows[0];
+    console.log(updatedComment);
+    res.json(updatedComment);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ err });
+  }
+})
+
 app.get('/lessons', async (req, res) => {
   try {
     const { rows: lessons } = await db.query('SELECT * FROM lessons');
