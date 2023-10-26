@@ -39,24 +39,13 @@ const Lesson = () => {
     useEffect(() => {
         loadLessons();
     }, []);
-
-    // useEffect(() => {
-    //     const handleClick = () => {
-    //         fetchAudio();
-    //     };
-    //     window.addEventListener("click", handleClick);
-    //         return () => {
-    //     window.removeEventListener("click", handleClick);
-    //     };
-    // }, []);
     
-    
-
     return (
         <div>
             <h2>Lesson is present</h2>
             <Header lessons={lessons} />
-            <Listen />
+            {/* <Listen /> */}
+            <button onClick={fetchAudio}>Click here to have the lesson read to you!</button>
             <Section lessons={lessons} />
             <Next />
         </div>
