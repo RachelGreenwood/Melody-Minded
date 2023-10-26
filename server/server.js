@@ -3,16 +3,32 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const db = require('./db/db-connection.js');
-
+const { Buffer } = require('node:buffer');
 
 const app = express();
 ///Users/cristina/src/2022H2TemplateFinal/client/build
-// const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
-// app.use(express.static(REACT_BUILD_DIR));
+const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
+app.use(express.static(REACT_BUILD_DIR));
 
 const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
+
+app.get("/api", async (req, res) => {
+  const text = req.query.text;
+  const apiKey = process.env.apiKey;
+  const audioFormat = "MP3";
+  const audioQuality = "44khz_16bit_mono";
+  const url = `http://api.voicerss.org/?key=${apiKey}&hl=en-us&src=${text}&f=${audioFormat}&c=MP3&r=${audioQuality}`;
+  try {
+    const response = await fetch(url);
+    const audioData = await response.arrayBuffer();
+    res.send(Buffer.from(audioData));
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 
 // creates an endpoint for the route /api
 app.get('/', (req, res) => {

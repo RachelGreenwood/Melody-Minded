@@ -7,30 +7,58 @@ import { useState, useEffect } from 'react';
 
 const Lesson = () => {
     const [lessons, setLessons] = useState([]);
+    const text = "Hello, world";
 
-    const loadLessons = () =>{
-        // A function to fetch the list of students that will be load anytime that list change
+    const loadLessons = () => {
         fetch("/lessons")
-          .then((response) => response.json())
-          .then((lessons) => {
+            .then((response) => response.json())
+            .then((lessons) => {
                 setLessons(lessons);
-                console.log(lessons)
-              });
-      }
+                console.log(lessons);
+            });
+    }
 
-      useEffect(() => {
+    const fetchAudio = async () => {
+        try {
+            const response = await fetch(`/api?text=${text}`);
+            const audioBlob = await response.blob();
+            const audioData = URL.createObjectURL(audioBlob);
+            playAudio(audioData);
+        } catch (error) {
+            console.error("Error fetching audio:", error);
+        }
+    }
+    
+    function playAudio(audioURL) {
+        const audioElement = new Audio(audioURL);
+        audioElement.play();
+    }
+
+    useEffect(() => {
         loadLessons();
-      }, []);
+    }, []);
 
-  return (
-    <div>
-        <h2>Lesson is present</h2>
-        <Header lessons={lessons} />
-        <Listen />
-        <Section lessons={lessons} />
-        <Next />
-    </div>
-  );
+    useEffect(() => {
+        const handleClick = () => {
+            fetchAudio();
+        };
+        window.addEventListener("click", handleClick);
+            return () => {
+        window.removeEventListener("click", handleClick);
+        };
+    }, []);
+    
+    
+
+    return (
+        <div>
+            <h2>Lesson is present</h2>
+            <Header lessons={lessons} />
+            <Listen />
+            <Section lessons={lessons} />
+            <Next />
+        </div>
+    );
 };
 
 export default Lesson;
