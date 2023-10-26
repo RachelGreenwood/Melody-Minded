@@ -2,13 +2,12 @@ import "./App.css";
 import Profile from "./components/profile";
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from "./components/loading";
-import { Route, Routes, Link, Switch } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AuthenticationButton from './components/authentication-button';
 import Navbar from './components/navbar.js';
 import Lesson from './components/lesson.js';
 import Forum from "./components/forum";
-import React, { Component } from 'react';
 import Home from "./components/home";
 
 function App() {

@@ -29,11 +29,10 @@ app.get("/api", async (req, res) => {
   }
 });
 
-
 // creates an endpoint for the route /api
 app.get('/', (req, res) => {
   res.json({ message: 'Hello from My template ExpressJS' });
-  // res.sendFile(path.join(REACT_BUILD_DIR, 'index.html'));
+  res.sendFile(path.join(REACT_BUILD_DIR, 'index.html'));
 });
 
 app.get('/users', async (req, res) => {
