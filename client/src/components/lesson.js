@@ -4,9 +4,11 @@ import Listen from './listen.js';
 import Section from './section.js';
 import Next from './next.js';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Lesson = () => {
     const [lessons, setLessons] = useState([]);
+    const { lessonId } = useParams();
     const text = "Hello, world";
 
     const loadLessons = () => {
@@ -38,15 +40,15 @@ const Lesson = () => {
         loadLessons();
     }, []);
 
-    useEffect(() => {
-        const handleClick = () => {
-            fetchAudio();
-        };
-        window.addEventListener("click", handleClick);
-            return () => {
-        window.removeEventListener("click", handleClick);
-        };
-    }, []);
+    // useEffect(() => {
+    //     const handleClick = () => {
+    //         fetchAudio();
+    //     };
+    //     window.addEventListener("click", handleClick);
+    //         return () => {
+    //     window.removeEventListener("click", handleClick);
+    //     };
+    // }, []);
     
     
 

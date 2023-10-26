@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [lessons, setLessons] = useState([]);
@@ -20,16 +21,18 @@ const Navbar = () => {
 
   return (
     <div>
-        <h2>Navbar is present</h2>
-        {/* TODO: route buttons to lesson pages/forum page */}
-        {lessons.map((lesson) => {
-            return (
-                <button key={lesson.id}>
-                    <p>{lesson.title}</p>
-                </button>
-            )
-        })}        
-        <button>Forum</button>
+        <h2>Navbar is present</h2>    
+        <nav>
+          <ul>
+            <li><Link to="/"><button>Home</button></Link></li>
+            {lessons.map((lesson, index) => (
+              <li key={index}>
+                <Link to={`/lessons/${index}`}><button>{lesson.title}</button></Link>
+              </li>
+            ))}
+            <li><Link to="/forum"><button>Forum</button></Link></li>
+          </ul>
+        </nav>
     </div>
   );
 };
