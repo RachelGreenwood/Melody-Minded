@@ -3,10 +3,10 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const db = require('./db/db-connection.js');
-const { Buffer } = require('node:buffer');
+const { Buffer } = require('buffer/');
 
 const app = express();
-///Users/cristina/src/2022H2TemplateFinal/client/build
+// Sets up production
 const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
 app.use(express.static(REACT_BUILD_DIR));
 
