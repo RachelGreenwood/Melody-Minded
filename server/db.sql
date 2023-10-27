@@ -39,7 +39,7 @@ ALTER TABLE public.comments OWNER TO tpl1122_2;
 --
 
 CREATE TABLE public.lessons (
-    id integer NOT NULL,
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title text,
     concept1 text,
     question1 text,

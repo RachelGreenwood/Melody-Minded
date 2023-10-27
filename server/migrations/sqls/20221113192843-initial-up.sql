@@ -1,6 +1,6 @@
 /* Replace with your SQL commands */
 CREATE TABLE public.lessons (
-    id integer NOT NULL,
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title text,
     concept1 text,
     question1 text,
