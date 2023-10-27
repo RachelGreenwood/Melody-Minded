@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.3
--- Dumped by pg_dump version 14.2
+-- Dumped from database version 14.8 (Homebrew)
+-- Dumped by pg_dump version 14.8 (Homebrew)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -21,203 +21,165 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
+-- Name: comments; Type: TABLE; Schema: public; Owner: tpl1122_2
 --
 
-CREATE TABLE public.migrations (
+CREATE TABLE public.comments (
     id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    run_on timestamp without time zone NOT NULL
+    poster text,
+    datetime timestamp without time zone,
+    comment text
 );
 
 
-ALTER TABLE public.migrations OWNER TO postgres;
+ALTER TABLE public.comments OWNER TO tpl1122_2;
 
 --
--- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: lessons; Type: TABLE; Schema: public; Owner: tpl1122_2
 --
 
-CREATE SEQUENCE public.migrations_id_seq
-    AS integer
+CREATE TABLE public.lessons (
+    id integer NOT NULL,
+    title text,
+    concept1 text,
+    question1 text,
+    "wrong_answer1A" text,
+    "wrong_answer1B" text,
+    "wrong_answer1C" text,
+    correct_answer1 text,
+    incorrect_feedback1 text,
+    correct_feedback1 text
+);
+
+
+ALTER TABLE public.lessons OWNER TO tpl1122_2;
+
+--
+-- Name: lessons_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl1122_2
+--
+
+ALTER TABLE public.lessons ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.lessons_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.migrations_id_seq OWNER TO postgres;
-
---
--- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
-
-
---
--- Name: students; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.students (
-    id integer NOT NULL,
-    lastname character varying(255),
-    firstname character varying(255)
+    CACHE 1
 );
 
 
-ALTER TABLE public.students OWNER TO postgres;
-
 --
--- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: untitled_table_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl1122_2
 --
 
-CREATE SEQUENCE public.students_id_seq
-    AS integer
+ALTER TABLE public.comments ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.untitled_table_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.students_id_seq OWNER TO postgres;
-
---
--- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
+    CACHE 1
+);
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgres
+-- Name: users; Type: TABLE; Schema: public; Owner: tpl1122_2
 --
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    lastname character varying(255),
-    firstname character varying(255),
-    email character varying(255),
-    sub character varying(255)
+    username text,
+    email character varying,
+    password character varying,
+    photo character varying,
+    lessons_completed integer
 );
 
 
-ALTER TABLE public.users OWNER TO postgres;
+ALTER TABLE public.users OWNER TO tpl1122_2;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: tpl1122_2
 --
 
-CREATE SEQUENCE public.users_id_seq
-    AS integer
+ALTER TABLE public.users ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-
---
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+    CACHE 1
+);
 
 
 --
--- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: tpl1122_2
 --
 
-ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
-
-
---
--- Name: students id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
+COPY public.comments (id, poster, datetime, comment) FROM stdin;
+1	testuser	\N	testcomment
+\.
 
 
 --
--- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Data for Name: lessons; Type: TABLE DATA; Schema: public; Owner: tpl1122_2
 --
 
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
-
-
---
--- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.migrations (id, name, run_on) VALUES (1, '/20221113192843-initial', '2022-11-13 11:55:53.414');
+COPY public.lessons (id, title, concept1, question1, "wrong_answer1A", "wrong_answer1B", "wrong_answer1C", correct_answer1, incorrect_feedback1, correct_feedback1) FROM stdin;
+1	testlesson	first concept	one question: ?	nop	wrong	nuh uhh	correct	um...no	nice!
+\.
 
 
 --
--- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: tpl1122_2
 --
 
-INSERT INTO public.students (id, lastname, firstname) VALUES (1, 'Gomez', 'Andrea');
-INSERT INTO public.students (id, lastname, firstname) VALUES (2, 'Lee', 'Becca');
-INSERT INTO public.students (id, lastname, firstname) VALUES (3, 'Smith', 'Will');
-INSERT INTO public.students (id, lastname, firstname) VALUES (4, 'Pond', 'Kate');
-INSERT INTO public.students (id, lastname, firstname) VALUES (5, 'Lasso', 'Jamie');
-INSERT INTO public.students (id, lastname, firstname) VALUES (7, 'Rodriguez', 'Arepa');
-INSERT INTO public.students (id, lastname, firstname) VALUES (8, 'Smith', 'Crush');
-INSERT INTO public.students (id, lastname, firstname) VALUES (9, 'Fonca', 'Billy');
-INSERT INTO public.students (id, lastname, firstname) VALUES (10, 'Gomez', 'Teresa');
-INSERT INTO public.students (id, lastname, firstname) VALUES (11, 'Tres', 'Prueba');
-INSERT INTO public.students (id, lastname, firstname) VALUES (12, 'Cuatro', 'Prueba');
-INSERT INTO public.students (id, lastname, firstname) VALUES (13, 'Cinco', 'Prueba');
+COPY public.users (id, username, email, password, photo, lessons_completed) FROM stdin;
+1	test	test	test	test	1
+2	tester	test2	test2	test2	4
+3	Techtonica	info@techtonica.org	HelloWorld	img	7
+\.
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: lessons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl1122_2
 --
 
-
-
---
--- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.migrations_id_seq', 1, true);
+SELECT pg_catalog.setval('public.lessons_id_seq', 1, true);
 
 
 --
--- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: untitled_table_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl1122_2
 --
 
-SELECT pg_catalog.setval('public.students_id_seq', 16, true);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.untitled_table_id_seq', 3, true);
 
 
 --
--- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl1122_2
 --
 
-ALTER TABLE ONLY public.migrations
-    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
-
-
---
--- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.students
-    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: lessons lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl1122_2
+--
+
+ALTER TABLE ONLY public.lessons
+    ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments untitled_table_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl1122_2
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT untitled_table_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: tpl1122_2
 --
 
 ALTER TABLE ONLY public.users
