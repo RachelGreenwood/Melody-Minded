@@ -16,8 +16,8 @@ function App() {
   const [comments, setComments] = useState([]);
   const [lessons, setLessons] = useState([]);
 
+  // Fetches data from users table to test connection
   const loadUsers = () =>{
-    // A function to fetch the list of students that will be load anytime that list change
     fetch("/users")
       .then((response) => response.json())
       .then((users) => {
@@ -25,8 +25,8 @@ function App() {
           });
   }
 
+  // Fetches data from comments table to test connection
   const loadComments = () =>{
-    // A function to fetch the list of students that will be load anytime that list change
     fetch("/comments")
       .then((response) => response.json())
       .then((comments) => {
@@ -34,8 +34,8 @@ function App() {
           });
   }
 
+  // Fetches data from lessons table to test connection
   const loadLessons = () =>{
-    // A function to fetch the list of students that will be load anytime that list change
     fetch("/lessons")
       .then((response) => response.json())
       .then((lessons) => {

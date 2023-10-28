@@ -6,7 +6,7 @@ const Navbar = () => {
     const [lessons, setLessons] = useState([]);
 
     const loadLessons = () =>{
-        // A function to fetch the list of students that will be load anytime that list change
+      // Fetches each lesson to display all lesson titles
         fetch("/lessons")
           .then((response) => response.json())
           .then((lessons) => {
@@ -25,6 +25,7 @@ const Navbar = () => {
         <nav>
           <ul>
             <li><Link to="/"><button>Home</button></Link></li>
+            {/* Displays all lesson titles as links to each lesson */}
             {lessons.map((lesson, index) => (
               <li key={index}>
                 <Link to={`/lessons/${index}`}><button>{lesson.title}</button></Link>

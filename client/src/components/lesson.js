@@ -8,9 +8,11 @@ import { useParams } from 'react-router-dom';
 
 const Lesson = () => {
     const [lessons, setLessons] = useState([]);
+    // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
     const lesson = lessons[lessonId];
 
+    // Loads lesson data from lessons table
     const loadLessons = () => {
         fetch("/lessons")
             .then((response) => response.json())
@@ -20,10 +22,13 @@ const Lesson = () => {
             });
     }
 
+    // Fetches audio from server
     const fetchAudio = async (textContent) => {
         try {
             const response = await fetch(`/api?text=${textContent}`);
+            // Turns server response into a blob, a file-like object of raw data
             const audioBlob = await response.blob();
+            // Turns the blob into a URL
             const audioData = URL.createObjectURL(audioBlob);
             playAudio(audioData);
         } catch (error) {
@@ -31,11 +36,13 @@ const Lesson = () => {
         }
     }
     
+    // Turns URL into audio and plays all the text on the page
     function playAudio(audioURL) {
         const audioElement = new Audio(audioURL);
         audioElement.play();
     }
 
+    // Gets text from all Section components on the page
     const collectTextContent = (lesson) => {
         let textContent = lesson ? lesson.title : "undefined"; // Start with the lesson title
         console.log(textContent)
@@ -47,6 +54,7 @@ const Lesson = () => {
         return textContent;
     }
 
+    // Sends text on the page to API fetch to turn to audio
     const handleReadLesson = () => {
         const textContent = collectTextContent(lesson);
         console.log(textContent)
@@ -61,8 +69,8 @@ const Lesson = () => {
         <div>
             <h2>Lesson is present</h2>
             <Header lessons={lessons} />
+            {/* May implement the Listen component if current fetch method can't handle all the text on the page */}
             {/* <Listen /> */}
-            {/* <button onClick={fetchAudio}>Click here to have the lesson read to you!</button> */}
             <button onClick={handleReadLesson}>Click here to have the lesson read to you!</button>
             <Section lessons={lessons} />
             <Next />
