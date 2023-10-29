@@ -1,6 +1,11 @@
 import React from 'react';
 
 const Section = (props) => {
+  // Gets random number
+  const getRandomNum = () => {
+    return Math.floor(Math.random() * (allOptions.length + 1));
+  }
+
   return (
     <div>
         <h2>Section is present</h2>
