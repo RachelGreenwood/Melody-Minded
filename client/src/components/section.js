@@ -52,7 +52,7 @@ const Section = (props) => {
       <p>Loading...</p>
     )}
     {answered && (
-      <div>
+      <div className={`feedback`}>
         {isCorrect ? props.lesson.correct_feedback1 : props.lesson.incorrect_feedback1}
       </div>
     )}

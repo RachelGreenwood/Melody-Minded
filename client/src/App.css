@@ -6,6 +6,10 @@ button, nav {
   font-family: 'Nunito';
 }
 
+.feedback {
+  font-family: 'Nanum Pen Script';
+}
+
 .App {
   text-align: center;
 }
