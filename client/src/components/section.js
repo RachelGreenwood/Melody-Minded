@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const Section = (props) => {
-  console.log(props.lesson);
   const [allOptions, setAllOptions] = useState([]);
+  // Logs if user selected an answer or not
+  const [answered, setAnswered] = useState(false);
+  // Logs the chosen answer
+  const [selectedAns, setSelectedAns] = useState(null)
+  // Logs if chosen answer is correct
+  const [isCorrect, setIsCorrect] = useState(null);
   // Gets random number
   const getRandomNum = () => {
     return Math.floor(Math.random() * (allOptions.length + 1));
@@ -21,6 +26,13 @@ const Section = (props) => {
     }
   }, [props.lesson]);
 
+  const handleBtnClick = e => {
+    if (!answered) {
+      setAnswered(true);
+      setSelectedAns(e.target.textContent)
+    }
+  }
+
   return (
     <div>
       <h2>Section is present</h2>
@@ -29,7 +41,7 @@ const Section = (props) => {
         <>
           <p>Title: {props.lesson.title}</p>
           {allOptions.map((option, index) => {
-            return <button key={index}>{option}</button>
+            return <button key={index} onClick={handleBtnClick}>{option}</button>
       })}
       </>
     ) : (
