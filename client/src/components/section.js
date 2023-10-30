@@ -30,6 +30,9 @@ const Section = (props) => {
     if (!answered) {
       setAnswered(true);
       setSelectedAns(e.target.textContent)
+      if (e.target.textContent === props.lesson.correct_answer1) {
+        setIsCorrect(true);
+      }
     }
   }
 
@@ -46,6 +49,11 @@ const Section = (props) => {
       </>
     ) : (
       <p>Loading...</p>
+    )}
+    {answered && (
+      <div>
+        {isCorrect ? props.lesson.correct_feedback1 : props.lesson.incorrect_feedback1}
+      </div>
     )}
     </div>
   );
