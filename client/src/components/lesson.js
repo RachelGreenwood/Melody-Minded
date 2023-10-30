@@ -11,6 +11,8 @@ const Lesson = () => {
     // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
     const lesson = lessons[lessonId];
+    // Logs if button is clicked or not (if true, changes color)
+    const [clicked, setClicked] = useState(false);
 
     // Loads lesson data from lessons table
     const loadLessons = () => {
@@ -57,19 +59,20 @@ const Lesson = () => {
     const handleReadLesson = () => {
         const textContent = collectTextContent(lesson);
         fetchAudio(textContent);
+        setClicked(true)
     }
 
     useEffect(() => {
         loadLessons();
     }, []);
-    
+
     return (
         <div>
             <h2>Lesson is present</h2>
             <Header lessons={lessons} />
             {/* May implement the Listen component if current fetch method can't handle all the text on the page */}
             {/* <Listen /> */}
-            <button onClick={handleReadLesson}>Click here to have the lesson read to you!</button>
+            <button className={`button ${clicked ? 'selected' : ''}`} onClick={handleReadLesson}>Click here to have the lesson read to you!</button>
             <Section lesson={lesson} />
             <Next />
         </div>
