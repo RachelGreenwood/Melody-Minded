@@ -11,7 +11,6 @@ import Forum from "./components/forum";
 import Home from "./components/home";
 
 function App() {
-
   const [users, setUsers] = useState([]);
   const [comments, setComments] = useState([]);
   const [lessons, setLessons] = useState([]);
