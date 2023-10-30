@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const Section = (props) => {
+  const { lesson } = props;
+  const [clicked, setClicked] = useState(false);
   const [allOptions, setAllOptions] = useState([]);
   // Logs if user selected an answer or not
   const [answered, setAnswered] = useState(false);
@@ -12,6 +14,26 @@ const Section = (props) => {
   const getRandomNum = () => {
     return Math.floor(Math.random() * (allOptions.length + 1));
   }
+
+  const fetchAudio = async (textContent) => {
+    try {
+        const response = await fetch(`/api?text=${lesson.concept1}. ${lesson.question1}. ${allOptions}.`);
+        // Turns server response into a blob, a file-like object of raw data
+        const audioBlob = await response.blob();
+        // Turns the blob into a URL
+        const audioData = URL.createObjectURL(audioBlob);
+        playAudio(audioData);
+        setClicked(true);
+    } catch (error) {
+        console.error("Error fetching audio:", error);
+    }
+}
+
+// Turns URL into audio and plays all the text on the page
+function playAudio(audioURL) {
+  const audioElement = new Audio(audioURL);
+  audioElement.play();
+}
 
   // Puts the correct answer at a random index among the wrong answers
   useEffect(() => {
@@ -40,6 +62,7 @@ const Section = (props) => {
   return (
     <div>
       <h2>Section is present</h2>
+      <button className={`button ${clicked ? 'selected' : ''}`} onClick={fetchAudio}>Click here to have this part read to you!</button>
       {/* Display all answers */}
       {props.lesson ? (
         <>
