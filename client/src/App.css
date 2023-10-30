@@ -2,6 +2,10 @@ body {
   font-family: 'Open Sans';
 }
 
+button, nav {
+  font-family: 'Nunito';
+}
+
 .App {
   text-align: center;
 }
