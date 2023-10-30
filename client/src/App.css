@@ -8,6 +8,14 @@ button, nav {
   font-family: 'Nunito';
 }
 
+button:hover {
+  background-color: #279EFF;
+}
+
+.button.selected {
+  background-color: #337CCF;
+}
+
 .feedback {
   font-family: 'Nanum Pen Script';
 }

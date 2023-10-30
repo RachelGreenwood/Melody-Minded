@@ -36,6 +36,7 @@ const Section = (props) => {
     }
   }
 
+
   return (
     <div>
       <h2>Section is present</h2>
@@ -45,7 +46,7 @@ const Section = (props) => {
           <p>{props.lesson.concept1}</p>
           <p>{props.lesson.question1}</p>
           {allOptions.map((option, index) => {
-            return <button key={index} onClick={handleBtnClick}>{option}</button>
+            return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
       })}
       </>
     ) : (
