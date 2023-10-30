@@ -14,3 +14,91 @@ test('Lesson component renders', () => {
 test('Section component renders', () => {
   render(<Section />);
 });
+
+test('Choosing the correct answer gives the appropriate feedback', () => {
+  const { getByText } = render(
+    <Section
+      lesson={{
+        concept1: 'first concept',
+        question1: 'one question: ?',
+        correct_answer1: 'correct',
+        wrong_answer1A: 'nop',
+        wrong_answer1B: 'wrong',
+        wrong_answer1C: 'nuh uhh',
+        correct_feedback1: 'nice!',
+        incorrect_feedback1: 'um...no'
+      }}
+      />
+    );
+
+  const button = getByText('correct');
+  button.click();
+  expect(button).toHaveClass('selected')
+  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('nice!')
+});
+
+test('Choosing an incorrect answer gives the appropriate feedback', () => {
+  const { getByText } = render(
+    <Section
+      lesson={{
+        concept1: 'first concept',
+        question1: 'one question: ?',
+        correct_answer1: 'correct',
+        wrong_answer1A: 'nop',
+        wrong_answer1B: 'wrong',
+        wrong_answer1C: 'nuh uhh',
+        correct_feedback1: 'nice!',
+        incorrect_feedback1: 'um...no'
+      }}
+      />
+    );
+
+  const button = getByText('nop');
+  button.click();
+  expect(button).toHaveClass('selected')
+  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('um...no')
+});
+
+test('Choosing an incorrect answer gives the appropriate feedback', () => {
+  const { getByText } = render(
+    <Section
+      lesson={{
+        concept1: 'first concept',
+        question1: 'one question: ?',
+        correct_answer1: 'correct',
+        wrong_answer1A: 'nop',
+        wrong_answer1B: 'wrong',
+        wrong_answer1C: 'nuh uhh',
+        correct_feedback1: 'nice!',
+        incorrect_feedback1: 'um...no'
+      }}
+      />
+    );
+
+  const button = getByText('wrong');
+  button.click();
+  expect(button).toHaveClass('selected')
+  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('um...no')
+});
+
+test('Choosing an incorrect answer gives the appropriate feedback', () => {
+  const { getByText } = render(
+    <Section
+      lesson={{
+        concept1: 'first concept',
+        question1: 'one question: ?',
+        correct_answer1: 'correct',
+        wrong_answer1A: 'nop',
+        wrong_answer1B: 'wrong',
+        wrong_answer1C: 'nuh uhh',
+        correct_feedback1: 'nice!',
+        incorrect_feedback1: 'um...no'
+      }}
+      />
+    );
+
+  const button = getByText('nuh uhh');
+  button.click();
+  expect(button).toHaveClass('selected')
+  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('um...no')
+});
