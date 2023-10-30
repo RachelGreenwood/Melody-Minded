@@ -42,7 +42,8 @@ const Section = (props) => {
       {/* Display all answers */}
       {props.lesson ? (
         <>
-          <p>Title: {props.lesson.title}</p>
+          <p>{props.lesson.concept1}</p>
+          <p>{props.lesson.question1}</p>
           {allOptions.map((option, index) => {
             return <button key={index} onClick={handleBtnClick}>{option}</button>
       })}

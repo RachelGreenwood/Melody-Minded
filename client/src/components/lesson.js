@@ -43,7 +43,7 @@ const Lesson = () => {
 
     // Gets text from all Section components on the page
     const collectTextContent = (lesson) => {
-        let textContent = lesson ? lesson.title : "undefined"; // Start with the lesson title
+        let textContent = lesson ? lesson.title : "undefined";
         console.log(textContent)
         if (lesson) {
             for (let section in lesson) {
