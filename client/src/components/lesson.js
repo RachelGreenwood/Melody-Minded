@@ -18,7 +18,6 @@ const Lesson = () => {
             .then((response) => response.json())
             .then((lessons) => {
                 setLessons(lessons);
-                console.log(lessons);
             });
     }
 
@@ -57,7 +56,6 @@ const Lesson = () => {
     // Sends text on the page to API fetch to turn to audio
     const handleReadLesson = () => {
         const textContent = collectTextContent(lesson);
-        console.log(textContent)
         fetchAudio(textContent);
     }
 
@@ -72,7 +70,7 @@ const Lesson = () => {
             {/* May implement the Listen component if current fetch method can't handle all the text on the page */}
             {/* <Listen /> */}
             <button onClick={handleReadLesson}>Click here to have the lesson read to you!</button>
-            <Section lessons={lessons} />
+            <Section lesson={lesson} />
             <Next />
         </div>
     );

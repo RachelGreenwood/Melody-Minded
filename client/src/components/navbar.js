@@ -11,7 +11,6 @@ const Navbar = () => {
           .then((response) => response.json())
           .then((lessons) => {
                 setLessons(lessons);
-                console.log(lessons)
               });
       }
 

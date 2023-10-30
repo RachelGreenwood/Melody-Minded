@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Section = (props) => {
+  console.log(props.lesson);
+  const [allOptions, setAllOptions] = useState([]);
   // Gets random number
   const getRandomNum = () => {
     return Math.floor(Math.random() * (allOptions.length + 1));
   }
 
+  // Puts the correct answer at a random index among the wrong answers
+  useEffect(() => {
+    if (props.lesson) {
+      const finalOptions = [
+        props.lesson.wrong_answer1A,
+        props.lesson.wrong_answer1B,
+        props.lesson.wrong_answer1C
+      ];
+      finalOptions.splice(getRandomNum(), 0, props.lesson.correct_answer1);
+      setAllOptions(finalOptions);
+    }
+  }, [props.lesson]);
+
   return (
     <div>
-        <h2>Section is present</h2>
-        {props.lessons.map((lesson) => {
-            return (
-                <div key={lesson.id}>
-                    <p>Concept: {lesson.concept1}</p>
-                    <p>Question: {lesson.question1}</p>
-                    <button>Answer 1: {lesson.wrong_answer1A}</button>
-                    <button>Answer 2: {lesson.wrong_answer1B}</button>
-                    <button>Answer 3: {lesson.wrong_answer1C}</button>
-                    <button>Answer 4: {lesson.correct_answer1}</button>
-                    <p>Feedback if Wrong: {lesson.incorrect_feedback1}</p>
-                    <p>Feedback if Right: {lesson.correct_feedback1}</p>
-                </div>
-            )
-        })} 
+      <h2>Section is present</h2>
+      {/* Display all answers */}
+      {props.lesson ? (
+        <>
+          <p>Title: {props.lesson.title}</p>
+          {allOptions.map((option, index) => {
+            return <button key={index}>{option}</button>
+      })}
+      </>
+    ) : (
+      <p>Loading...</p>
+    )}
     </div>
   );
 };
