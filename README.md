@@ -32,7 +32,7 @@ Melody Minded is a music theory education web application to teach children ages
 - **Have the Lesson Read to You:** Click a button to have the text read to you by AI
 
 ## Demo
-![Link to live demo](https://server-eavm.onrender.com)
+[Link to live demo](https://server-eavm.onrender.com)
 
 ## Installation
 To run the project locally, follow these steps:
@@ -71,5 +71,5 @@ https://docs.google.com/document/d/10LNMiQnZnxRINp46LAQRpoNGfHNjz_KU8X2GeBREt6g/
 
 ## Contact
 If you have any questions, issues, or suggestions, contact the project maintainer:
-- rachelgreenwood3301@gmail.com
-- ![LinkedIn](https://www.linkedin.com/in/rachel-greenwood3301/)
+- - Email: [rachelgreenwood3301@gmail.com](mailto:rachelgreenwood3301@gmail.com)
+- LinkedIn: [Rachel Greenwood](https://www.linkedin.com/in/rachel-greenwood3301/)
