@@ -89,7 +89,7 @@ function playAudio(audioURL) {
       </div>
     )}
     </div>
-  );
+  );  
 };
 
 export default Section;

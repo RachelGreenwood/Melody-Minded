@@ -5,9 +5,9 @@ const Header = (props) => {
     <div>
         <h2>Header is present</h2>
         {/* Shows lesson title */}
-        {props.lessons.map((lesson) => {
+        {props.lesson.map((lesson, index) => {
             return (
-                <p key={lesson.id}>Lesson title: {lesson.title}</p>
+                <p key={index}>Lesson title: {lesson.title}</p>
             )
         })}  
     </div>

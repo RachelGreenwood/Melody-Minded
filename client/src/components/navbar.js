@@ -5,19 +5,18 @@ import Logo from '/Users/tpl1122_2/ProjectCRUDTemplate/client/src/Logo.png';
 
 // Navigate to different pages
 const Navbar = () => {
-    const [lessons, setLessons] = useState([]);
+    const [lessons_new, setLessons_New] = useState([]);
 
-    const loadLessons = () =>{
-      // Fetches each lesson to display all lesson titles
-        fetch("/lessons")
-          .then((response) => response.json())
-          .then((lessons) => {
-                setLessons(lessons);
-              });
-      }
+    const loadLessons_New = () => {
+      fetch("/lessons_new")
+        .then((response) => response.json())
+        .then((lessons_new) => {
+          setLessons_New(lessons_new);
+        });
+    }
 
       useEffect(() => {
-        loadLessons();
+        loadLessons_New();
       }, []);
 
   return (
@@ -28,7 +27,7 @@ const Navbar = () => {
           <ul>
             <li><Link to="/"><button>Home</button></Link></li>
             {/* Displays all lesson titles as links to each lesson */}
-            {lessons.map((lesson, index) => (
+            {lessons_new.map((lesson, index) => (
               <li key={index}>
                 <Link to={`/lessons/${index}`}><button>{lesson.title}</button></Link>
               </li>
