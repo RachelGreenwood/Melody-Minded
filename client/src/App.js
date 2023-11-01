@@ -14,6 +14,15 @@ function App() {
   const [users, setUsers] = useState([]);
   const [comments, setComments] = useState([]);
   const [lessons, setLessons] = useState([]);
+  const [lessons_new, setLessons_New] = useState([]);
+
+  const loadLessons_New = () => {
+    fetch("/lessons_new")
+      .then((response) => response.json())
+      .then((lessons_new) => {
+        setLessons_New(lessons_new);
+      });
+  }
 
   // Fetches data from users table to test connection
   const loadUsers = () =>{
@@ -46,6 +55,7 @@ function App() {
     loadUsers();
     loadComments();
     loadLessons();
+    loadLessons_New();
   }, []);
 
   const { isLoading } = useAuth0();
@@ -60,6 +70,21 @@ function App() {
       {/* <p>Data from users table: {users[0].username}</p>
       <p>Data from comments table: {comments[0].comment}</p>
       <p>Data from lessons table: {lessons[0].title}</p> */}
+      {lessons_new.map((lesson) => {
+        return (
+          <>
+            <p>{lesson.title}</p>
+            <p>{lesson.concept}</p>
+            <p>{lesson.question}</p>
+            <p>{lesson.wrong_answerA}</p>
+            <p>{lesson.wrong_answerB}</p>
+            <p>{lesson.wrong_answerC}</p>
+            <p>{lesson.correct_answer}</p>
+            <p>{lesson.incorrect_feedback}</p>
+            <p>{lesson.correct_feedback}</p>
+          </>
+        )
+      })}
       <AuthenticationButton />
       <Navbar />
       <div className="container flex-grow-1">

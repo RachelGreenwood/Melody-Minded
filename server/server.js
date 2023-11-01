@@ -140,6 +140,68 @@ app.get('/lessons', async (req, res) => {
   }
 });
 
+app.get('/lessons_new', async (req, res) => {
+  try {
+    const { rows: lessons } = await db.query(`SELECT
+    title,
+    concept,
+    questions.question,
+    questions."wrong_answerA",
+    questions."wrong_answerB",
+    questions."wrong_answerC",
+    questions.correct_answer,
+    questions.incorrect_feedback,
+    questions.correct_feedback
+  FROM
+    questions
+  INNER JOIN
+    concepts
+  ON
+    questions.concept_id = concepts.id
+  INNER JOIN
+    lessons_new
+  ON
+    concepts.lesson_id = lessons_new.id
+  ORDER BY title, concept ASC`);
+  console.log("In the server, ", lessons);
+  res.send(lessons);
+  } catch(err) {
+    console.log(err);
+    return res.status(400).json({err});
+  }
+});
+
+// SELECT title, concept, questions.question, questions."wrong_answerA", questions."wrong_answerB", questions."wrong_answerC", questions.correct_answer, questions.incorrect_feedback, questions.correct_answer
+// FROM questions
+// INNER JOIN concepts
+// ON questions.concept_id = concepts.id
+// INNER JOIN lessons_new
+// ON concepts.lesson_id = lessons_new.id
+// ORDER BY title, concept ASC;
+
+// app.get('/sightings', async (req, res) => {
+//   try {
+//       const { rows: animals } = await db.query(`SELECT
+//       s.id,
+//       s.datetime,
+//       s.species,
+//       s.location,
+//       s.healthy,
+//       s.sighter_email,
+//       s.timestamp AS sighting_timestamp,
+//       a.nickname
+//   FROM
+//       sightings s
+//   LEFT JOIN
+//       animals a
+//   ON
+//       s.species = a.species`);
+//       res.send(animals);
+//   } catch (e) {
+//       return res.status(400).json({ e });
+//   }
+// });
+
 // Shows server is running
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
