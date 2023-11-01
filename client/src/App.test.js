@@ -15,6 +15,19 @@ test('Section component renders', () => {
   render(<Section />);
 });
 
+test('The concept and question are displayed', () => {
+  const lesson = {
+    concept1: 'first concept',
+    question1: 'one question: ?',
+  };
+
+  const { getByText } = render(<Section lesson={lesson} />);
+  const concept = getByText('first concept');
+  const question = getByText('one question: ?');
+  expect(concept).toBeInTheDocument();
+  expect(question).toBeInTheDocument();
+});
+
 test('Choosing the correct answer gives the appropriate feedback', () => {
   const { getByText } = render(
     <Section
