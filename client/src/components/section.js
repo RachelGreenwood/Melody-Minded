@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+// Shows each section of a lesson: a concept, quiz question, and feedback
 const Section = (props) => {
   const { lesson } = props;
+  // Logs if a button has been clicked (to update color)
   const [clicked, setClicked] = useState(false);
+  // Holds all quiz questions for the section
   const [allOptions, setAllOptions] = useState([]);
   // Logs if user selected an answer or not
   const [answered, setAnswered] = useState(false);
@@ -15,6 +18,7 @@ const Section = (props) => {
     return Math.floor(Math.random() * (allOptions.length + 1));
   }
 
+  // Fetches text-to-speech audio data from the server and sets text to concept, question, and all answers
   const fetchAudio = async (textContent) => {
     try {
         const response = await fetch(`/api?text=${lesson.concept1}. ${lesson.question1}. ${allOptions}.`);
@@ -48,10 +52,13 @@ function playAudio(audioURL) {
     }
   }, [props.lesson]);
 
+  // If answer is already selected, user cannot select another answer
   const handleBtnClick = e => {
+    // If unannswered, set it to answered
     if (!answered) {
       setAnswered(true);
       setSelectedAns(e.target.textContent)
+      // If user selects correct answer, log as correct to display appropriate feedback
       if (e.target.textContent === props.lesson.correct_answer1) {
         setIsCorrect(true);
       }
@@ -63,11 +70,11 @@ function playAudio(audioURL) {
     <div>
       <h2>Section is present</h2>
       <button className={`button ${clicked ? 'selected' : ''}`} onClick={fetchAudio}>Click here to have this part read to you!</button>
-      {/* Display all answers */}
       {props.lesson ? (
         <>
           <p>{props.lesson.concept1}</p>
           <p>{props.lesson.question1}</p>
+          {/* Display all answers */}
           {allOptions.map((option, index) => {
             return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
       })}
@@ -75,6 +82,7 @@ function playAudio(audioURL) {
     ) : (
       <p>Loading...</p>
     )}
+    {/* Shows feedback when answer is selectted */}
     {answered && (
       <div className={`feedback`}>
         {isCorrect ? props.lesson.correct_feedback1 : props.lesson.incorrect_feedback1}

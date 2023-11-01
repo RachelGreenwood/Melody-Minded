@@ -5,6 +5,7 @@ import Next from './next.js';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+// Shows the full lesson
 const Lesson = () => {
     const [lessons, setLessons] = useState([]);
     // Chooses an individual lesson to show based on id
