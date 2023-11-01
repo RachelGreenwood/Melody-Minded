@@ -11,6 +11,15 @@ const Lesson = () => {
     // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
     const lesson = lessons[lessonId];
+    const [lessons_new, setLessons_New] = useState([]);
+
+  const loadLessons_New = () => {
+    fetch("/lessons_new")
+      .then((response) => response.json())
+      .then((lessons_new) => {
+        setLessons_New(lessons_new);
+      });
+  }
 
     // Loads lesson data from lessons table
     const loadLessons = () => {
@@ -23,13 +32,15 @@ const Lesson = () => {
 
     useEffect(() => {
         loadLessons();
+        loadLessons_New();
     }, []);
 
     return (
         <div>
             <h2>Lesson is present</h2>
             <Header lessons={lessons} />
-            <Section lesson={lesson} />
+            <Section lesson={lessons_new[0]} />
+            <Section lesson={lessons_new[1]} />
             <Next />
         </div>
     );

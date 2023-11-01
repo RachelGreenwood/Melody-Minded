@@ -19,9 +19,9 @@ const Section = (props) => {
   }
 
   // Fetches text-to-speech audio data from the server and sets text to concept, question, and all answers
-  const fetchAudio = async (textContent) => {
+  const fetchAudio = async () => {
     try {
-        const response = await fetch(`/api?text=${lesson.concept1}. ${lesson.question1}. ${allOptions}.`);
+        const response = await fetch(`/api?text=${lesson.concept}. ${lesson.question}. ${allOptions}.`);
         // Turns server response into a blob, a file-like object of raw data
         const audioBlob = await response.blob();
         // Turns the blob into a URL
@@ -43,11 +43,11 @@ function playAudio(audioURL) {
   useEffect(() => {
     if (props.lesson) {
       const finalOptions = [
-        props.lesson.wrong_answer1A,
-        props.lesson.wrong_answer1B,
-        props.lesson.wrong_answer1C
+        props.lesson.wrong_answerA,
+        props.lesson.wrong_answerB,
+        props.lesson.wrong_answerC
       ];
-      finalOptions.splice(getRandomNum(), 0, props.lesson.correct_answer1);
+      finalOptions.splice(getRandomNum(), 0, props.lesson.correct_answer);
       setAllOptions(finalOptions);
     }
   }, [props.lesson]);
@@ -59,7 +59,7 @@ function playAudio(audioURL) {
       setAnswered(true);
       setSelectedAns(e.target.textContent)
       // If user selects correct answer, log as correct to display appropriate feedback
-      if (e.target.textContent === props.lesson.correct_answer1) {
+      if (e.target.textContent === props.lesson.correct_answer) {
         setIsCorrect(true);
       }
     }
@@ -72,8 +72,8 @@ function playAudio(audioURL) {
       <button className={`button ${clicked ? 'selected' : ''}`} onClick={fetchAudio}>Click here to have this part read to you!</button>
       {props.lesson ? (
         <>
-          <p>{props.lesson.concept1}</p>
-          <p>{props.lesson.question1}</p>
+          <p>{props.lesson.concept}</p>
+          <p>{props.lesson.question}</p>
           {/* Display all answers */}
           {allOptions.map((option, index) => {
             return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
@@ -85,7 +85,7 @@ function playAudio(audioURL) {
     {/* Shows feedback when answer is selectted */}
     {answered && (
       <div className={`feedback`}>
-        {isCorrect ? props.lesson.correct_feedback1 : props.lesson.incorrect_feedback1}
+        {isCorrect ? props.lesson.correct_feedback : props.lesson.incorrect_feedback}
       </div>
     )}
     </div>
