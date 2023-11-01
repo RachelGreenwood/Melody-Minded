@@ -7,14 +7,9 @@ import { useParams } from 'react-router-dom';
 
 // Shows the full lesson
 const Lesson = () => {
-    const [lessons, setLessons] = useState([]);
     const [lessons_new, setLessons_New] = useState([]);
     // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
-    // const lesson = lessons[lessonId];
-    const lesson = lessons_new[lessonId];
-    console.log(lesson);
-    // console.log(newLessonId);
 
   const loadLessons_New = () => {
     fetch(`/lessons_new/${lessonId}`)
@@ -24,17 +19,7 @@ const Lesson = () => {
       });
   }
 
-    // Loads lesson data from lessons table
-    const loadLessons = () => {
-        fetch("/lessons")
-            .then((response) => response.json())
-            .then((lessons) => {
-                setLessons(lessons);
-            });
-    }
-
     useEffect(() => {
-        loadLessons();
         loadLessons_New();
     }, [lessonId]);
 
