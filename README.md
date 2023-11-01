@@ -6,51 +6,50 @@
 - [Features](#features)
 - [Demo](#demo)
 - [Installation](#installation)
-<!-- - [Usage](#usage) -->
 - [Future Features](#future-features)
 - [Trello-Board](#trello-board)
 - [Project Proposal](#project-proposal)
 - [Contact](#contact)
 
 ## Description
-(![Photo of Melody Minded](<Project Photo.png>))
+![Photo of Melody Minded](<Project Photo.png>)
 Melody Minded is a music theory education web application to teach children ages 5-15 music theory
 
 ## Tech Stack
 **Languages:**
-JavaScript
-HTML
-CSS
-Jest
+- JavaScript
+- HTML
+- CSS
+- Jest
 
 **Frameworks:**
-React.js
-Express.js
-Node.js
+- React.js
+- Express.js
+- Node.js
 
 ## Features
 - **Interactive Learning:** Learn through the program through quizzes
 - **Have the Lesson Read to You:** Click a button to have the text read to you by AI
 
 ## Demo
-[Link to live demo](#https://server-eavm.onrender.com)
+![Link to live demo](https://server-eavm.onrender.com)
 
 ## Installation
 To run the project locally, follow these steps:
 
 1. **Clone the repository:**
-   git clone https://github.com/RachelGreenwood/Melody-Minded.git
-   cd Melody-Minded
+- git clone https://github.com/RachelGreenwood/Melody-Minded.git
+- cd Melody-Minded
 
 2. **Install dependencies:**
-    npm install
+- npm install
 
 3. **Start the application:**
-    cd server
-    npm run dev
+- cd server
+- npm run dev
 
 4. **Access the application:**
-    Open your web browser and go to http://localhost:3000
+- Open your web browser and go to http://localhost:3000
 
 ## Future Features
 - Logging in/creating an account with Auth0
@@ -73,4 +72,4 @@ https://docs.google.com/document/d/10LNMiQnZnxRINp46LAQRpoNGfHNjz_KU8X2GeBREt6g/
 ## Contact
 If you have any questions, issues, or suggestions, contact the project maintainer:
 - rachelgreenwood3301@gmail.com
-- [LinkedIn](#https://www.linkedin.com/in/rachel-greenwood3301/)
+- ![LinkedIn](https://www.linkedin.com/in/rachel-greenwood3301/)
