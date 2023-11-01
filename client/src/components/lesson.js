@@ -27,8 +27,13 @@ const Lesson = () => {
         <div>
             <h2>Lesson is present</h2>
             <Header lesson={lessons_new} />
-            <Section lesson={lessons_new[0]} />
-            <Section lesson={lessons_new[1]} />
+            {lessons_new.map((lesson, index) => {
+                return (
+                    <div key={index}>
+                        <Section lesson={lesson} />
+                    </div>
+                )
+            })}
             <Next />
         </div>
     );
