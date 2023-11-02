@@ -29,6 +29,7 @@ const Lesson = () => {
         <div>
             <h2>Lesson is present</h2>
             <Header lesson={lessons_new} />
+            {/* Returns as many sections as exist; flexible to different lesson lengths */}
             {lessons_new.map((lesson, index) => {
                 return (
                     <div key={index}>
