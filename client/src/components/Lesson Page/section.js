@@ -88,9 +88,9 @@ function playAudio(audioURL) {
     )}
     {/* Shows feedback when answer is selectted */}
     {answered && (
-      <div className={`feedback`}>
+      <p className={`feedback`}>
         {isCorrect ? lesson.correct_feedback : lesson.incorrect_feedback}
-      </div>
+      </p>
     )}
     </div>
   );  
