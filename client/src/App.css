@@ -18,6 +18,7 @@ button:hover {
 
 .button.selected {
   background-color: #337CCF;
+  color: white;
 }
 
 .feedback {
