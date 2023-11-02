@@ -19,6 +19,8 @@ button, nav {
 
 ul {
   list-style-type: none;
+  color: #141E46;
+  /* position: fixed; */
 }
 
 button:hover {
