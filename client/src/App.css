@@ -4,6 +4,10 @@ body {
   background-color: #F2F7FF;
 }
 
+img {
+  max-width: 25%;
+}
+
 button, nav {
   font-family: 'Nunito';
   font-size: 18px;
