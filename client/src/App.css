@@ -8,6 +8,10 @@ button, nav {
   font-family: 'Nunito';
 }
 
+ul {
+  list-style-type: none;
+}
+
 button:hover {
   background-color: #279EFF;
 }
