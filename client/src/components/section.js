@@ -13,9 +13,13 @@ const Section = (props) => {
   const [selectedAns, setSelectedAns] = useState(null)
   // Logs if chosen answer is correct
   const [isCorrect, setIsCorrect] = useState(null);
-  // Gets random number
-  const getRandomNum = () => {
-    return Math.floor(Math.random() * (allOptions.length + 1));
+  // Gets random number using Fisher-Yates algorithm
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   // Fetches text-to-speech audio data from the server and sets text to concept, question, and all answers
@@ -41,16 +45,17 @@ function playAudio(audioURL) {
 
   // Puts the correct answer at a random index among the wrong answers
   useEffect(() => {
-    if (props.lesson) {
+    if (lesson) {
       const finalOptions = [
-        props.lesson.wrong_answerA,
-        props.lesson.wrong_answerB,
-        props.lesson.wrong_answerC
+        lesson.wrong_answerA,
+        lesson.wrong_answerB,
+        lesson.wrong_answerC,
+        lesson.correct_answer
       ];
-      finalOptions.splice(getRandomNum(), 0, props.lesson.correct_answer);
-      setAllOptions(finalOptions);
+      console.log(finalOptions)
+      setAllOptions(shuffleArray(finalOptions));
     }
-  }, [props.lesson]);
+  }, [lesson]);
 
   // If answer is already selected, user cannot select another answer
   const handleBtnClick = e => {
@@ -59,7 +64,7 @@ function playAudio(audioURL) {
       setAnswered(true);
       setSelectedAns(e.target.textContent)
       // If user selects correct answer, log as correct to display appropriate feedback
-      if (e.target.textContent === props.lesson.correct_answer) {
+      if (e.target.textContent === lesson.correct_answer) {
         setIsCorrect(true);
       }
     }
@@ -70,10 +75,10 @@ function playAudio(audioURL) {
     <div>
       <h2>Section is present</h2>
       <button className={`button ${clicked ? 'selected' : ''}`} onClick={fetchAudio}>Click here to have this part read to you!</button>
-      {props.lesson ? (
+      {lesson ? (
         <>
-          <p>{props.lesson.concept}</p>
-          <p>{props.lesson.question}</p>
+          <p>{lesson.concept}</p>
+          <p>{lesson.question}</p>
           {/* Display all answers */}
           {allOptions.map((option, index) => {
             return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
@@ -85,7 +90,7 @@ function playAudio(audioURL) {
     {/* Shows feedback when answer is selectted */}
     {answered && (
       <div className={`feedback`}>
-        {isCorrect ? props.lesson.correct_feedback : props.lesson.incorrect_feedback}
+        {isCorrect ? lesson.correct_feedback : lesson.incorrect_feedback}
       </div>
     )}
     </div>
