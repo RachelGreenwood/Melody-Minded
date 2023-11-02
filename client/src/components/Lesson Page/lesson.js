@@ -28,15 +28,19 @@ const Lesson = () => {
     return (
         <div>
             <h2>Lesson is present</h2>
-            <Header lesson={lessons_new} />
+            <header>
+                <Header lesson={lessons_new} />
+            </header>
             {/* Returns as many sections as exist; flexible to different lesson lengths */}
-            {lessons_new.map((lesson, index) => {
-                return (
-                    <div key={index}>
-                        <Section lesson={lesson} />
-                    </div>
-                )
-            })}
+            <main>
+                {lessons_new.map((lesson, index) => {
+                    return (
+                        <section key={index}>
+                            <Section lesson={lesson} />
+                        </section>
+                    )
+                })}
+            </main>
             <Next />
         </div>
     );
