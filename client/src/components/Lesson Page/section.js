@@ -69,7 +69,6 @@ function playAudio(audioURL) {
 
   return (
     <div>
-      <h2>Section is present</h2>
       <button onClick={fetchAudio}>Click here to have this part read to you!</button>
       {lesson ? (
         <>

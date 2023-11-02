@@ -22,7 +22,6 @@ const Navbar = () => {
 
   return (
     <div>
-        <h2>Navbar is present</h2>    
         <nav>
           <img src={Logo} alt='Melody Minded logo'></img>
           <ul>

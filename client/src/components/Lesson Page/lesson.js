@@ -27,7 +27,6 @@ const Lesson = () => {
 
     return (
         <div>
-            <h2>Lesson is present</h2>
             <header>
                 <Header lesson={section} />
             </header>
