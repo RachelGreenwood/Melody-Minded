@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 // Shows the full lesson
 const Lesson = () => {
-    const [lessons_new, setLessons_New] = useState([]);
+    const [section, setSection] = useState([]);
     // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
 
@@ -16,7 +16,7 @@ const Lesson = () => {
     fetch(`/lessons_new/${lessonId}`)
       .then((response) => response.json())
       .then((lessons_new) => {
-        setLessons_New(lessons_new);
+        setSection(lessons_new);
         console.log(lessons_new)
       });
   }
@@ -29,11 +29,11 @@ const Lesson = () => {
         <div>
             <h2>Lesson is present</h2>
             <header>
-                <Header lesson={lessons_new} />
+                <Header lesson={section} />
             </header>
             {/* Returns as many sections as exist; flexible to different lesson lengths */}
             <main>
-                {lessons_new.map((lesson, index) => {
+                {section.map((lesson, index) => {
                     return (
                         <section key={index}>
                             <Section lesson={lesson} />
