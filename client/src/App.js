@@ -1,14 +1,14 @@
 import "./App.css";
-import Profile from "./components/profile";
+import Profile from "./components/Authentication/profile";
 import { useAuth0 } from '@auth0/auth0-react';
-import Loading from "./components/loading";
+import Loading from "./components/Authentication/loading";
 import { Route, Routes, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import AuthenticationButton from './components/authentication-button';
-import Navbar from './components/navbar.js';
-import Lesson from './components/lesson.js';
-import Forum from "./components/forum";
-import Home from "./components/home";
+import AuthenticationButton from './components/Authentication/authentication-button';
+import Navbar from './components/Home Page/navbar.js';
+import Lesson from './components/Lesson Page/lesson.js';
+import Forum from "./components/Forum/forum";
+import Home from "./components/Home Page/home";
 
 function App() {
   const { isLoading } = useAuth0();

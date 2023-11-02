@@ -12,12 +12,12 @@ const Section = (props) => {
   // Logs if chosen answer is correct
   const [isCorrect, setIsCorrect] = useState(null);
   // Gets random number using Fisher-Yates algorithm
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
+  const shuffleArray = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return array;
+    return arr;
   }
 
   // Fetches text-to-speech audio data from the server and sets text to concept, question, and all answers

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import App from './App';
-import Lesson from './components/lesson.js';
-import Section from './components/section.js';
+import Lesson from './components/Lesson Page/lesson.js';
+import Section from './components/Lesson Page/section.js';
 
 test('App component renders', () => {
   render(<App />);
