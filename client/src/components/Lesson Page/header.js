@@ -7,7 +7,7 @@ const Header = (props) => {
         {/* Shows lesson title */}
         {props.lesson.map((lesson, index) => {
             return (
-                <p key={index}>Lesson title: {lesson.title}</p>
+                <h1 key={index}>Lesson title: {lesson.title}</h1>
             )
         })}  
     </div>
