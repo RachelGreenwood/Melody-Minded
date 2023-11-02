@@ -21,16 +21,19 @@ function App() {
     <div id="app" className="d-flex flex-column h-100">
       <h2> Welcome to Melody Minded! </h2>
       <AuthenticationButton />
-      <Navbar />
       <div className="container flex-grow-1">
-      {!user ? <span>Hello from Techtonica From DEV!!!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="api/me" element={<Profile user={user}/>} />
-        <Route path="lessons/:lessonId" element={<Lesson />} />
-        <Route path='/forum' element={<Forum />} />
-      </Routes>
+        <div className="navbar-grid">
+          <Navbar />
+        </div>
+        {!user ? <span>Hello from Techtonica From DEV!!!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
+        <div className="lesson-grid">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="api/me" element={<Profile user={user}/>} />
+            <Route path="lessons/:lessonId" element={<Lesson />} />
+            <Route path='/forum' element={<Forum />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
