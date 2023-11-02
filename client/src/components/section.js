@@ -43,7 +43,7 @@ function playAudio(audioURL) {
   audioElement.play();
 }
 
-  // Puts the correct answer at a random index among the wrong answers
+  // Puts the correct answer at a random index among the wrong answers using callback function
   useEffect(() => {
     if (lesson) {
       const finalOptions = [
@@ -52,7 +52,6 @@ function playAudio(audioURL) {
         lesson.wrong_answerC,
         lesson.correct_answer
       ];
-      console.log(finalOptions)
       setAllOptions(shuffleArray(finalOptions));
     }
   }, [lesson]);
@@ -81,7 +80,9 @@ function playAudio(audioURL) {
           <p>{lesson.question}</p>
           {/* Display all answers */}
           {allOptions.map((option, index) => {
-            return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
+            if (option !== null) {
+              return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
+            }
       })}
       </>
     ) : (
