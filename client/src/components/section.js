@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 // Shows each section of a lesson: a concept, quiz question, and feedback
 const Section = (props) => {
   const { lesson } = props;
-  // Logs if a button has been clicked (to update color)
-  const [clicked, setClicked] = useState(false);
   // Holds all quiz questions for the section
   const [allOptions, setAllOptions] = useState([]);
   // Logs if user selected an answer or not
@@ -31,7 +29,6 @@ const Section = (props) => {
         // Turns the blob into a URL
         const audioData = URL.createObjectURL(audioBlob);
         playAudio(audioData);
-        setClicked(true);
     } catch (error) {
         console.error("Error fetching audio:", error);
     }
@@ -73,7 +70,7 @@ function playAudio(audioURL) {
   return (
     <div>
       <h2>Section is present</h2>
-      <button className={`button ${clicked ? 'selected' : ''}`} onClick={fetchAudio}>Click here to have this part read to you!</button>
+      <button onClick={fetchAudio}>Click here to have this part read to you!</button>
       {lesson ? (
         <>
           <p>{lesson.concept}</p>
