@@ -22,6 +22,10 @@ button:hover {
   color: white;
 }
 
+p {
+  font-size: 18px;
+}
+
 .feedback {
   font-family: 'Nanum Pen Script';
 }
