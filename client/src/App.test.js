@@ -17,13 +17,13 @@ test('Section component renders', () => {
 
 test('The concept and question are displayed', () => {
   const lesson = {
-    concept1: 'first concept',
-    question1: 'one question: ?',
+    concept: 'concept 1',
+    question: 'Q1',
   };
 
   const { getByText } = render(<Section lesson={lesson} />);
-  const concept = getByText('first concept');
-  const question = getByText('one question: ?');
+  const concept = getByText('concept 1');
+  const question = getByText('Q1');
   expect(concept).toBeInTheDocument();
   expect(question).toBeInTheDocument();
 });
@@ -32,14 +32,14 @@ test('Choosing the correct answer gives the appropriate feedback', () => {
   const { getByText } = render(
     <Section
       lesson={{
-        concept1: 'first concept',
-        question1: 'one question: ?',
-        correct_answer1: 'correct',
-        wrong_answer1A: 'nop',
-        wrong_answer1B: 'wrong',
-        wrong_answer1C: 'nuh uhh',
-        correct_feedback1: 'nice!',
-        incorrect_feedback1: 'um...no'
+        concept: 'concept one',
+        question: 'question one',
+        correct_answer: 'correct',
+        wrong_answerA: 'wrong once',
+        wrong_answerB: 'wrong twice',
+        wrong_answerC: 'wrong thrice',
+        correct_feedback: 'nice work',
+        incorrect_feedback: 'that is not correct'
       }}
       />
     );
@@ -47,71 +47,27 @@ test('Choosing the correct answer gives the appropriate feedback', () => {
   const button = getByText('correct');
   button.click();
   expect(button).toHaveClass('selected')
-  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('nice!')
+  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('nice work')
 });
 
 test('Choosing an incorrect answer gives the appropriate feedback', () => {
   const { getByText } = render(
     <Section
       lesson={{
-        concept1: 'first concept',
-        question1: 'one question: ?',
-        correct_answer1: 'correct',
-        wrong_answer1A: 'nop',
-        wrong_answer1B: 'wrong',
-        wrong_answer1C: 'nuh uhh',
-        correct_feedback1: 'nice!',
-        incorrect_feedback1: 'um...no'
+        concept: 'concept two',
+        question: 'question two',
+        correct_answer: 'right again',
+        wrong_answerA: 'wrong again',
+        wrong_answerB: 'wrong again II',
+        wrong_answerC: 'NULL',
+        correct_feedback: 'excellent',
+        incorrect_feedback: 'that is mahogany!'
       }}
       />
     );
 
-  const button = getByText('nop');
+  const button = getByText('wrong again II');
   button.click();
   expect(button).toHaveClass('selected')
-  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('um...no')
-});
-
-test('Choosing an incorrect answer gives the appropriate feedback', () => {
-  const { getByText } = render(
-    <Section
-      lesson={{
-        concept1: 'first concept',
-        question1: 'one question: ?',
-        correct_answer1: 'correct',
-        wrong_answer1A: 'nop',
-        wrong_answer1B: 'wrong',
-        wrong_answer1C: 'nuh uhh',
-        correct_feedback1: 'nice!',
-        incorrect_feedback1: 'um...no'
-      }}
-      />
-    );
-
-  const button = getByText('wrong');
-  button.click();
-  expect(button).toHaveClass('selected')
-  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('um...no')
-});
-
-test('Choosing an incorrect answer gives the appropriate feedback', () => {
-  const { getByText } = render(
-    <Section
-      lesson={{
-        concept1: 'first concept',
-        question1: 'one question: ?',
-        correct_answer1: 'correct',
-        wrong_answer1A: 'nop',
-        wrong_answer1B: 'wrong',
-        wrong_answer1C: 'nuh uhh',
-        correct_feedback1: 'nice!',
-        incorrect_feedback1: 'um...no'
-      }}
-      />
-    );
-
-  const button = getByText('nuh uhh');
-  button.click();
-  expect(button).toHaveClass('selected')
-  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('um...no')
+  expect(button.parentElement.querySelector('.feedback')).toHaveTextContent('that is mahogany!')
 });

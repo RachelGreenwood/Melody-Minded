@@ -7,6 +7,7 @@ import Logo from '/Users/tpl1122_2/ProjectCRUDTemplate/client/src/Logo.png';
 const Navbar = () => {
     const [lessons_new, setLessons_New] = useState([]);
 
+    // Fetches data of all lessons
     const loadLessons_New = () => {
       fetch("/lessons_new")
         .then((response) => response.json())

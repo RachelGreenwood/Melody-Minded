@@ -11,11 +11,13 @@ const Lesson = () => {
     // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
 
+    // Fetches the needed lesson from /lessons_new table
   const loadLessons_New = () => {
     fetch(`/lessons_new/${lessonId}`)
       .then((response) => response.json())
       .then((lessons_new) => {
         setLessons_New(lessons_new);
+        console.log(lessons_new)
       });
   }
 
