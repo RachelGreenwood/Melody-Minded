@@ -6,6 +6,7 @@ body {
 
 button, nav {
   font-family: 'Nunito';
+  font-size: 18px;
 }
 
 ul {
