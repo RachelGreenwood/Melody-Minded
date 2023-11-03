@@ -6,7 +6,7 @@ const db = require('./db/db-connection.js');
 const { Buffer } = require('node:buffer');
 
 const app = express();
-///Users/cristina/src/2022H2TemplateFinal/client/build
+// Sets up production
 const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
 app.use(express.static(REACT_BUILD_DIR));
 
@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+// Fetches data from text-to-speech API
 app.get("/api", async (req, res) => {
   const text = req.query.text;
   const apiKey = process.env.apiKey;
@@ -29,12 +30,12 @@ app.get("/api", async (req, res) => {
   }
 });
 
-// creates an endpoint for the route /api
 app.get('/', (req, res) => {
   res.json({ message: 'Hello from My template ExpressJS' });
   res.sendFile(path.join(REACT_BUILD_DIR, 'index.html'));
 });
 
+// Gets data from users table
 app.get('/users', async (req, res) => {
   try {
     const { rows: users } = await db.query('SELECT * FROM users');
@@ -46,6 +47,7 @@ app.get('/users', async (req, res) => {
   }
 });
 
+// Adds user to users table
 app.post("/users", async (req, res) => {
   try {
     console.log("In the server", req.body);
@@ -62,7 +64,7 @@ app.post("/users", async (req, res) => {
     res.status(400).json({err});
   }
 });
-
+// Gets data from comments table
 app.get('/comments', async (req, res) => {
   try {
     const { rows: comments } = await db.query('SELECT * FROM comments');
@@ -74,6 +76,7 @@ app.get('/comments', async (req, res) => {
   }
 });
 
+// Adds comment to comments table
 app.post("/comments", async (req, res) => {
   try {
     console.log("In the server", req.body);
@@ -91,6 +94,7 @@ app.post("/comments", async (req, res) => {
   }
 });
 
+// Edits a comment
 app.put("/comments/:id", async (req, res) => {
   try {
     const commentId = req.params.id;
@@ -111,6 +115,7 @@ app.put("/comments/:id", async (req, res) => {
   }
 })
 
+// Deletes a comment
 app.delete("/comments/:id", async (req, res) => {
   try {
     const commentId = req.params.id;
@@ -123,6 +128,7 @@ app.delete("/comments/:id", async (req, res) => {
   }
 });
 
+// Gets data from lessons table
 app.get('/lessons', async (req, res) => {
   try {
     const { rows: lessons } = await db.query('SELECT * FROM lessons');
@@ -134,107 +140,74 @@ app.get('/lessons', async (req, res) => {
   }
 });
 
-// create the get request
-// app.get('/api/students', cors(), async (req, res) => {
-//   // const STUDENTS = [
+app.get('/lessons_new', async (req, res) => {
+  try {
+    const { rows: lessons } = await db.query(`SELECT
+    lessons_new.id,
+    title,
+    concept,
+    questions.question,
+    questions."wrong_answerA",
+    questions."wrong_answerB",
+    questions."wrong_answerC",
+    questions.correct_answer,
+    questions.incorrect_feedback,
+    questions.correct_feedback
+  FROM
+    questions
+  INNER JOIN
+    concepts
+  ON
+    questions.concept_id = concepts.id
+  INNER JOIN
+    lessons_new
+  ON
+    concepts.lesson_id = lessons_new.id
+  ORDER BY title, concept ASC`);
+  console.log("In the server, ", lessons);
+  res.send(lessons);
+  } catch(err) {
+    console.log(err);
+    return res.status(400).json({err});
+  }
+});
 
-//   //     { id: 1, firstName: 'Lisa', lastName: 'Lee' },
-//   //     { id: 2, firstName: 'Eileen', lastName: 'Long' },
-//   //     { id: 3, firstName: 'Fariba', lastName: 'Dadko' },
-//   //     { id: 4, firstName: 'Cristina', lastName: 'Rodriguez' },
-//   //     { id: 5, firstName: 'Andrea', lastName: 'Trejo' },
-//   // ];
-//   // res.json(STUDENTS);
-//   try {
-//     const { rows: students } = await db.query('SELECT * FROM students');
-//     res.send(students);
-//   } catch (e) {
-//     return res.status(400).json({ e });
-//   }
-// });
+app.get('/lessons_new/:lessonId', async (req, res) => {
+  try {
+    const { lessonId } = req.params;
+    console.log("lesson id: ", lessonId);
+    const { rows: lessons } = await db.query(`SELECT
+    lessons_new.id,
+    title,
+    concept,
+    questions.question,
+    questions."wrong_answerA",
+    questions."wrong_answerB",
+    questions."wrong_answerC",
+    questions.correct_answer,
+    questions.incorrect_feedback,
+    questions.correct_feedback
+  FROM
+    questions
+  INNER JOIN
+    concepts
+  ON
+    questions.concept_id = concepts.id
+  INNER JOIN
+    lessons_new
+  ON
+    concepts.lesson_id = lessons_new.id
+  WHERE
+    lessons_new.id = $1`, [lessonId]);
+  console.log("In the server, ", lessons);
+  res.send(lessons);
+  } catch(err) {
+    console.log(err);
+    return res.status(400).json({err});
+  }
+});
 
-// create the POST request
-// app.post('/api/students', cors(), async (req, res) => {
-//   const newUser = {
-//     firstname: req.body.firstname,
-//     lastname: req.body.lastname,
-//   };
-//   console.log([newUser.firstname, newUser.lastname]);
-//   const result = await db.query(
-//     'INSERT INTO students(firstname, lastname) VALUES($1, $2) RETURNING *',
-//     [newUser.firstname, newUser.lastname],
-//   );
-//   console.log(result.rows[0]);
-//   res.json(result.rows[0]);
-// });
-
-// //A put request - Update a student 
-// app.put('/api/students/:studentId', cors(), async (req, res) =>{
-//   console.log(req.params);
-//   //This will be the id that I want to find in the DB - the student to be updated
-//   const studentId = req.params.studentId
-//   const updatedStudent = { id: req.body.id, firstname: req.body.firstname, lastname: req.body.lastname}
-//   console.log("In the server from the url - the student id", studentId);
-//   console.log("In the server, from the react - the student to be edited", updatedStudent);
-//   // UPDATE students SET lastname = "something" WHERE id="16";
-//   const query = `UPDATE students SET lastname=$1, firstname=$2 WHERE id=${studentId} RETURNING *`;
-//   const values = [updatedStudent.lastname, updatedStudent.firstname];
-//   try {
-//     const updated = await db.query(query, values);
-//     console.log(updated.rows[0]);
-//     res.send(updated.rows[0]);
-
-//   }catch(e){
-//     console.log(e);
-//     return res.status(400).json({e})
-//   }
-// })
-
-// // delete request
-// app.delete('/api/students/:studentId', cors(), async (req, res) =>{
-//   const studentId = req.params.studentId;
-//   //console.log("From the delete request-url", req.params);
-//   await db.query('DELETE FROM students WHERE id=$1', [studentId]);
-//   res.status(200).end();
-
-// });
-
-
-// create the POST request for a new user
-// CREATE TABLE users (
-// 	ID SERIAL PRIMARY KEY,
-// 	lastname varchar(255),
-// 	firstname varchar(255),
-//     email varchar(255), 
-//     sub varchar(255));
-// app.post('/api/me', cors(), async (req, res) => {
-//   const newUser = {
-//     lastname: req.body.family_name,
-//     firstname: req.body.given_name,
-//     email: req.body.email,
-//     sub: req.body.sub
-
-//   }
-//   //console.log(newUser);
-
-//   const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
-//   const valuesEmail = [newUser.email]
-//   const resultsEmail = await db.query(queryEmail, valuesEmail);
-//   if(resultsEmail.rows[0]){
-//     console.log(`Thank you ${resultsEmail.rows[0].firstname} for comming back`)
-//   } else{
-//   const query = 'INSERT INTO users(lastname, firstname, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
-//   const values = [newUser.lastname, newUser.firstname, newUser.email, newUser.sub]
-//   const result = await db.query(query, values);
-//   console.log(result.rows[0]);
-
-//   }
-
-// });
-
-
-
-// console.log that your server is up and running
+// Shows server is running
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

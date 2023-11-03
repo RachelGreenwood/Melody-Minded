@@ -3,10 +3,10 @@ import React from 'react';
 const Header = (props) => {
   return (
     <div>
-        <h2>Header is present</h2>
-        {props.lessons.map((lesson) => {
+        {/* Shows lesson title */}
+        {props.lesson.map((lesson, index) => {
             return (
-                <p key={lesson.id}>Lesson title: {lesson.title}</p>
+                <h1 key={index}>{lesson.title}</h1>
             )
         })}  
     </div>

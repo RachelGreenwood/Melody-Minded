@@ -1,3 +1,89 @@
+body {
+  font-family: 'Open Sans';
+  color: #141E46;
+  background-color: #F2F7FF;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto;
+  align-content: start;
+}
+
+.navbar-grid {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 1;
+}
+
+.lesson-grid {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row: 1;
+}
+
+.section-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+ }
+
+.main-content {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.answer-buttons {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.feedback-grid {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: -30px;
+}
+
+img {
+  max-width: 85%;
+}
+
+button, nav {
+  font-family: 'Nunito';
+  font-size: 18px;
+}
+
+nav {
+  height: 100vh;
+  border-right: 2px solid #141E46;
+  margin-right: 20px;
+}
+
+ul {
+  list-style-type: none;
+  color: #141E46;
+  /* position: fixed; */
+}
+
+button:hover {
+  background-color: #279EFF;
+}
+
+.button.selected {
+  background-color: #337CCF;
+  color: white;
+}
+
+p {
+  font-size: 18px;
+}
+
+.feedback {
+  font-family: 'Nanum Pen Script';
+  font-size: 30px;
+}
+
 .App {
   text-align: center;
 }
