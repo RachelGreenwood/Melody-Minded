@@ -25,9 +25,25 @@ body {
 
 .section-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 20px;
  }
+
+.main-content {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.answer-buttons {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.feedback-grid {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: -30px;
+}
 
 img {
   max-width: 85%;

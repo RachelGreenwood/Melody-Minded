@@ -69,25 +69,27 @@ function playAudio(audioURL) {
 
   return (
     <div className='section-container'>
-      <div>
         <button onClick={fetchAudio}>Click here to have this part read to you!</button>
         {lesson ? (
           <>
-            <p>{lesson.concept}</p>
-            <p>{lesson.question}</p>
-            {/* Display all answers */}
-            {allOptions.map((option, index) => {
-              // Tests option is not null to take out nonexistent answers; flexible so questions can have 2-4 answers
-              if (option !== null) {
-                return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
-              }
-        })}
+            <div className='main-content'>
+              <p>{lesson.concept}</p>
+              <p>{lesson.question}</p>
+            </div>
+            <div className='answer-buttons'>
+              {/* Display all answers */}
+              {allOptions.map((option, index) => {
+                // Tests option is not null to take out nonexistent answers; flexible so questions can have 2-4 answers
+                if (option !== null) {
+                  return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
+                }
+            })}
+            </div>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
-    {/* Shows feedback when answer is selectted */}
+    {/* Shows feedback when answer is selected */}
       <div className='feedback-grid'>
         {answered && (
           <p className={`feedback`}>
