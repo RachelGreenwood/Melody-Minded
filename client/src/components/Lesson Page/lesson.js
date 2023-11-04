@@ -34,7 +34,7 @@ const Lesson = () => {
             <main>
                 {section.map((lesson, index) => {
                     return (
-                        <section key={index}>
+                        <section className='section' key={index}>
                             <Section lesson={lesson} />
                         </section>
                     )

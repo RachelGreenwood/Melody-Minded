@@ -29,6 +29,10 @@ body {
   gap: 20px;
  }
 
+.section {
+  margin-bottom: 80px;
+}
+
 h1 {
   margin-top: 5px;
 }
