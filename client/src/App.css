@@ -15,6 +15,18 @@ body {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 1;
+  position: relative;
+}
+
+.navbar-grid:after {
+  content: '';
+  height: 100%;
+  width: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #141E46;
+  margin-right: 10px;
 }
 
 .lesson-grid {
@@ -80,15 +92,13 @@ button, nav {
 
 nav {
   height: 100vh;
-  border-right: 2px solid #141E46;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 ul {
   list-style-type: none;
   color: #141E46;
   padding: 0;
-  /* position: fixed; */
 }
 
 li {
