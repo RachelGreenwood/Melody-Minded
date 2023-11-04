@@ -49,6 +49,10 @@ img {
   max-width: 85%;
 }
 
+.login {
+  float: right;
+}
+
 button, nav {
   font-family: 'Nunito';
   font-size: 18px;

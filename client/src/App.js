@@ -19,13 +19,12 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-      <h2> Welcome to Melody Minded! </h2>
       <AuthenticationButton />
       <div className="container flex-grow-1">
         <div className="navbar-grid">
           <Navbar />
+          {!user ? <span>Please sign in</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
         </div>
-        {!user ? <span>Hello from Techtonica From DEV!!!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
         <div className="lesson-grid">
           <Routes>
             <Route path="/" element={<Home />} />
