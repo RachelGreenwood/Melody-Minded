@@ -57,6 +57,7 @@ h1 {
 .answer-buttons {
   grid-column: 1;
   grid-row: 3;
+  padding: 7px;
 }
 
 .feedback-grid {
@@ -114,7 +115,7 @@ button:hover {
   background-color: #279EFF;
 }
 
-.button.selected {
+.answer-buttons.selected {
   background-color: #337CCF;
   color: white;
 }

@@ -81,7 +81,7 @@ function playAudio(audioURL) {
               {allOptions.map((option, index) => {
                 // Tests option is not null to take out nonexistent answers; flexible so questions can have 2-4 answers
                 if (option !== null) {
-                  return <button className={`button ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
+                  return <button className={`answer-buttons ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
                 }
             })}
             </div>
