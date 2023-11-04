@@ -50,8 +50,20 @@ img {
   padding: 10px;
 }
 
-.auth, .login {
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
   float: right;
+  margin-right:10px
+}
+
+.auth {
+  padding-right: 10px;
+}
+
+.avatar {
+  max-width: 40px;
 }
 
 button, nav {

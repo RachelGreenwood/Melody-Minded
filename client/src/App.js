@@ -19,9 +19,16 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-      <AuthenticationButton />
-      {!user ? <span className="auth">Please sign in</span> : <span className="auth">Hello <Link to="api/me">{user.name}</Link></span> }
-      <div className="container flex-grow-1">
+      <div className="user-info">
+        {!user ? <span>Please sign in</span> : (
+          <>
+            <img className="avatar" src={user.picture} alt='user avatar' />
+            <span className="auth"><Link to="api/me">{user.nickname}</Link></span>
+          </>
+        )}
+        <AuthenticationButton />
+      </div>
+        <div className="container flex-grow-1">
         <div className="navbar-grid">
           <Navbar />
         </div>
