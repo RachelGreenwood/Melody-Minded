@@ -58,6 +58,7 @@ h1 {
   grid-column: 1;
   grid-row: 3;
   padding: 7px;
+  border-radius: 10%;
 }
 
 .feedback-grid {
