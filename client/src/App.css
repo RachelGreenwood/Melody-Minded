@@ -68,7 +68,13 @@ nav {
 ul {
   list-style-type: none;
   color: #141E46;
+  padding: 0;
   /* position: fixed; */
+}
+
+li {
+  border-bottom: solid 2px #141E46;
+  padding: 10px;
 }
 
 button:hover {
