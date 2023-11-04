@@ -69,7 +69,7 @@ function playAudio(audioURL) {
 
   return (
     <div className='section-container'>
-        <button onClick={fetchAudio}>Click here to have this part read to you!</button>
+        <button className='audio' onClick={fetchAudio}>Click here to have this part read to you!</button>
         {lesson ? (
           <>
             <div className='main-content'>

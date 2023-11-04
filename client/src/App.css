@@ -92,6 +92,10 @@ li {
   padding: 10px;
 }
 
+.audio {
+  max-width: 50%;
+}
+
 button:hover {
   background-color: #279EFF;
 }
