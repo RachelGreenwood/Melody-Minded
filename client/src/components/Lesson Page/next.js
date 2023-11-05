@@ -8,10 +8,10 @@ const Next = (props) => {
     <div>
         {/* If there are more lessons, link to next lesson */}
         {nextLessonId === lessonsLength ? (
-        <button><Link to={`/lessons/${nextLessonId}`}>Next Lesson</Link></button>
+        <button><Link style={{textDecoration: "none"}} to={`/lessons/${nextLessonId}`}>Next Lesson</Link></button>
       ) : (
         // If on the last lesson, link to forum page
-        <button><Link to={`/forum`}>Forum</Link></button>
+        <button><Link style={{textDecoration: "none"}} to={`/forum`}>Forum</Link></button>
       )}
     </div>
   );
