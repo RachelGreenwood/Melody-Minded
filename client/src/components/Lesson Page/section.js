@@ -51,6 +51,9 @@ function playAudio(audioURL) {
       ];
       setAllOptions(shuffleArray(finalOptions));
     }
+    setAnswered(false);
+    setSelectedAns(null);
+    setIsCorrect(null);
   }, [lesson]);
 
   // If answer is already selected, user cannot select another answer
