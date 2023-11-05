@@ -28,7 +28,7 @@ body {
 }
 
 .lesson-grid {
-  grid-column: 2;
+  grid-column: 2 / span 2;
   grid-row: 1;
 }
 
@@ -142,6 +142,8 @@ p {
 }
 
 .feedback {
+  grid-column: 3;
+  grid-row: 1;
   font-family: 'Nanum Pen Script';
   font-size: 30px;
 }
