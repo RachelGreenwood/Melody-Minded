@@ -75,6 +75,7 @@ h1 {
 img {
   max-width: 90%;
   padding: 10px;
+  height: auto;
 }
 
 .user-info {
