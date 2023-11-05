@@ -79,7 +79,7 @@ function playAudio(audioURL) {
           <>
             <div className='main-content'>
             {paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+              <p dangerouslySetInnerHTML={{ __html: paragraph }} key={index}></p>
             ))}
               <p>{lesson.question}</p>
             </div>
