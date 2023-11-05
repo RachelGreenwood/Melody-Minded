@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 // Shows the full lesson
 const Lesson = () => {
     const [section, setSection] = useState([]);
+    const [lesson, setLesson] = useState([]);
     // Chooses an individual lesson to show based on id
     const { lessonId } = useParams();
 
@@ -20,8 +21,17 @@ const Lesson = () => {
       });
   }
 
+  const loadAllLessons= () => {
+    fetch(`/lessons_new/`)
+      .then((response) => response.json())
+      .then((lessons_new) => {
+        setLesson(lessons_new)
+      });
+  }
+
     useEffect(() => {
         loadLessons_New();
+        loadAllLessons();
     }, [lessonId]);
 
     return (
@@ -39,7 +49,7 @@ const Lesson = () => {
                     )
                 })}
             </main>
-            <Next />
+            <Next lessonId={lessonId} lesson={lesson} />
         </div>
     );
 };
