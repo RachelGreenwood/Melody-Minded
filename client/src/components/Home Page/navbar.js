@@ -20,6 +20,9 @@ const Navbar = () => {
         loadLessons_New();
       }, []);
 
+// Fixes the lesson duplication problem using a Set to filter out duplicates
+const uniqueTitles = [...new Set(lessons_new.map((lesson) => lesson.title))];
+
   return (
     <div>
         <nav>
@@ -27,9 +30,9 @@ const Navbar = () => {
           <ul>
             <li><Link style={{textDecoration: 'none'}} to="/"><div>Home</div></Link></li>
             {/* Displays all lesson titles as links to each lesson */}
-            {lessons_new.map((lesson, index) => (
-              <li key={lesson.id}>
-                <Link style={{textDecoration: 'none'}} to={`/lessons/${lesson.id}`}><div>{lesson.title}</div></Link>
+            {uniqueTitles.map((lesson, index) => (
+              <li key={index + 1}>
+                <Link style={{textDecoration: 'none'}} to={`/lessons/${index + 1}`}><div>{lesson}</div></Link>
               </li>
             ))}
             <li><Link style={{textDecoration: 'none'}} to="/forum"><div>Forum</div></Link></li>
