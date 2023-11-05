@@ -5,7 +5,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <h1>{uniqueTitles}</h1> 
+      <h1 style={{marginTop: 12}}>{uniqueTitles}</h1> 
     </div>
   );
 };
