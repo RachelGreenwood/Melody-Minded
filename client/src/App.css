@@ -58,7 +58,7 @@ h1 {
   grid-column: 1;
   grid-row: 3;
   padding: 7px;
-  border-radius: 10%;
+  border-radius: 6%;
   margin-right: 1rem;
 }
 
@@ -119,6 +119,7 @@ li {
 
 button:hover {
   background-color: #279EFF;
+  box-shadow: 0 3px 7px #337CCF;
 }
 
 .answer-buttons.selected {
