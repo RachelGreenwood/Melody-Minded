@@ -19,19 +19,10 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-      <div className="user-info">
-        {!user ? <span>Please sign in</span> : (
-          <>
-            <img className="avatar" src={user.picture} alt='user avatar' />
-            <span className="auth"><Link to="api/me">{user.nickname}</Link></span>
-          </>
-        )}
-        <AuthenticationButton />
-      </div>
         <div className="container flex-grow-1">
-        <div className="navbar-grid">
-          <Navbar />
-        </div>
+          <div className="navbar-grid">
+            <Navbar />
+          </div>
         <div className="lesson-grid">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -39,6 +30,15 @@ function App() {
             <Route path="lessons/:lessonId" element={<Lesson />} />
             <Route path='/forum' element={<Forum />} />
           </Routes>
+        </div>
+        <div className="last-column">
+          {!user ? <span>Please sign in</span> : (
+            <>
+              <img className="avatar" src={user.picture} alt='user avatar' />
+              <span className="auth"><Link to="api/me">{user.nickname}</Link></span>
+            </>
+          )}
+          <AuthenticationButton />
         </div>
       </div>
     </div>
