@@ -69,6 +69,8 @@ function playAudio(audioURL) {
     }
   }
 
+  const bodyWithLineBreaks = lesson.concept.replace(/\\n/g, '\n');
+  const paragraphs = bodyWithLineBreaks.split('\n');
 
   return (
     <div className='section-container'>
@@ -76,7 +78,9 @@ function playAudio(audioURL) {
         {lesson ? (
           <>
             <div className='main-content'>
-              <p>{lesson.concept}</p>
+            {paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
               <p>{lesson.question}</p>
             </div>
             <div className='answer-buttons'>
