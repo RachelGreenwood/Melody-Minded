@@ -17,7 +17,6 @@ const Lesson = () => {
       .then((response) => response.json())
       .then((lessons_new) => {
         setSection(lessons_new);
-        console.log(lessons_new)
       });
   }
 
