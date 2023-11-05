@@ -81,6 +81,11 @@ img {
   height: auto;
 }
 
+.link {
+  text-decoration: none;
+  color: #141E46;
+}
+
 .user-info {
   display: flex;
   align-items: center;
