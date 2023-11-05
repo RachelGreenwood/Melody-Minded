@@ -84,8 +84,8 @@ img {
 .user-info {
   display: flex;
   align-items: center;
-  float: right;
-  margin-right:10px
+  margin-right:10px;
+  margin-top: 10px;
 }
 
 .auth {
@@ -93,7 +93,7 @@ img {
 }
 
 .avatar {
-  max-width: 40px;
+  max-width: 2rem;
 }
 
 button, nav {

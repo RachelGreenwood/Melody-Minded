@@ -32,6 +32,7 @@ function App() {
           </Routes>
         </div>
         <div className="last-column">
+          <div className="user-info">
           {!user ? <span>Please sign in</span> : (
             <>
               <img className="avatar" src={user.picture} alt='user avatar' />
@@ -39,6 +40,7 @@ function App() {
             </>
           )}
           <AuthenticationButton />
+          </div>
         </div>
       </div>
     </div>
