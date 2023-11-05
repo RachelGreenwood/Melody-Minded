@@ -23,7 +23,7 @@ const Section = (props) => {
   // Fetches text-to-speech audio data from the server and sets text to concept, question, and all answers
   const fetchAudio = async () => {
     try {
-        const response = await fetch(`/api?text=${lesson.concept}. ${lesson.question}. ${allOptions}.`);
+        const response = await fetch(`/api?text=${conceptToAudio}. ${questionToAudio}. ${allOptions}.`);
         // Turns server response into a blob, a file-like object of raw data
         const audioBlob = await response.blob();
         // Turns the blob into a URL
@@ -69,8 +69,13 @@ function playAudio(audioURL) {
     }
   }
 
+  // Formats concepts to have paragraph breaks
   const bodyWithLineBreaks = lesson.concept.replace(/\\n/g, '\n');
   const paragraphs = bodyWithLineBreaks.split('\n');
+
+  // Formats text to not send images to text-to-audio API
+  const conceptToAudio = paragraphs.join('').replace(/<img[^>]*>/g, '');
+  const questionToAudio = lesson.question.replace(/<img[^>]*>/g, '');
 
   return (
     <div className='section-container'>
