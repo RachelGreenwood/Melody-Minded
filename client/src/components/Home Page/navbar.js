@@ -28,8 +28,8 @@ const Navbar = () => {
             <li><Link style={{textDecoration: 'none'}} to="/"><div>Home</div></Link></li>
             {/* Displays all lesson titles as links to each lesson */}
             {lessons_new.map((lesson, index) => (
-              <li key={index}>
-                <Link style={{textDecoration: 'none'}} to={`/lessons/${index}`}><div>{lesson.title}</div></Link>
+              <li key={lesson.id}>
+                <Link style={{textDecoration: 'none'}} to={`/lessons/${lesson.id}`}><div>{lesson.title}</div></Link>
               </li>
             ))}
             <li><Link style={{textDecoration: 'none'}} to="/forum"><div>Forum</div></Link></li>
