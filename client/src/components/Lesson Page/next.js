@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './next.css';
 
 // Links to next lesson, or to forum if on last lesson
 const Next = (props) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '/Users/tpl1122_2/ProjectCRUDTemplate/client/src/Logo.png';
+import './navbar.css';
 
 // Navigate to different pages
 const Navbar = () => {

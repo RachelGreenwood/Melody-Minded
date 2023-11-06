@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <div id="app" className="container d-flex flex-column h-100">
+    <div className="container d-flex flex-column h-100">
       <div className="navbar-grid">
         <Navbar />
       </div>

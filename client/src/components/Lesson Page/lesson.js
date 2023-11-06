@@ -4,6 +4,7 @@ import Section from './section.js';
 import Next from './next.js';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './lesson.css';
 
 // Shows the full lesson
 const Lesson = () => {

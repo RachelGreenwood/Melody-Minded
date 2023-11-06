@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './section.css';
 
 // Shows each section of a lesson: a concept, quiz question, and feedback
 const Section = (props) => {
