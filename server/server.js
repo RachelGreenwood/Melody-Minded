@@ -64,6 +64,7 @@ app.post("/users", async (req, res) => {
     res.status(400).json({err});
   }
 });
+
 // Gets data from comments table
 app.get('/comments', async (req, res) => {
   try {
