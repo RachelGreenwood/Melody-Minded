@@ -38,7 +38,7 @@ function App() {
           {!user ? <span>Please sign in</span> : (
             <>
               <img className="avatar" src={user.picture} alt='user avatar' />
-              <span className="auth"><Link to="api/me">{user.nickname}</Link></span>
+              <span className="auth"><Link className="link" to="api/me">{user.nickname}</Link></span>
             </>
           )}
           <AuthenticationButton />
