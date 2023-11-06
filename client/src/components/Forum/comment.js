@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Each individual comment
 const Comment = () => {
   return (
     <div>

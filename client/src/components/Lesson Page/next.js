@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Not necessary for project until there are multiple lesson pages
+
+// Links to next lesson, or to forum if on last lesson
 const Next = (props) => {
+  // Gets number of total lessons
   const lessonsLength = [...new Set(props.lesson.map((lesson) => lesson.title))].length;
+  // Gets number of nnext lesson's id
   const nextLessonId = parseInt(props.lessonId) + 1;
   
   return (

@@ -11,6 +11,7 @@ import Forum from "./components/Forum/forum";
 import Home from "./components/Home Page/home";
 
 function App() {
+  // Loading symbol
   const { isLoading } = useAuth0();
   const { user } = useAuth0();
   if (isLoading) {
@@ -33,6 +34,7 @@ function App() {
         </div>
         <div className="last-column">
           <div className="user-info">
+            {/* User info and sign-in button */}
           {!user ? <span>Please sign in</span> : (
             <>
               <img className="avatar" src={user.picture} alt='user avatar' />

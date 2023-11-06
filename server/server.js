@@ -140,6 +140,7 @@ app.get('/lessons', async (req, res) => {
   }
 });
 
+// Fetches lessons data from lessons_new table
 app.get('/lessons_new', async (req, res) => {
   try {
     const { rows: lessons } = await db.query(`SELECT
@@ -172,6 +173,7 @@ app.get('/lessons_new', async (req, res) => {
   }
 });
 
+// Fetches a particular lesson from the lessons_new table
 app.get('/lessons_new/:lessonId', async (req, res) => {
   try {
     const { lessonId } = req.params;

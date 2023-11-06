@@ -84,6 +84,7 @@ function playAudio(audioURL) {
           <>
             <div className='main-content'>
             {paragraphs.map((paragraph, index) => (
+              // Parses any images as HTML outside of text as image
               <p dangerouslySetInnerHTML={{ __html: paragraph }} key={index}></p>
             ))}
               <p dangerouslySetInnerHTML={{ __html: lesson.question }}></p>

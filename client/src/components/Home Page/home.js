@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Landing page
 const Home = () => {
   return (
     <div>

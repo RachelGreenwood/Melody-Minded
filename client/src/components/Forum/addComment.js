@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Lets user add a comment
 const AddComment = () => {
   return (
     <div>
