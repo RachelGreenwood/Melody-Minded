@@ -86,6 +86,10 @@ img {
   color: #141E46;
 }
 
+#next {
+  margin-bottom: 10px;
+}
+
 .user-info {
   display: flex;
   align-items: center;
