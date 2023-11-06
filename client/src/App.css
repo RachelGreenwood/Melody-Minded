@@ -1,7 +1,7 @@
 /* Root styling file */
 
 body {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   color: #141E46;
   background-color: #F2F7FF;
 }
@@ -46,7 +46,7 @@ img {
 }
 
 button, nav {
-  font-family: 'Nunito';
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
 }
 
