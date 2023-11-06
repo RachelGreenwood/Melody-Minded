@@ -71,5 +71,5 @@ https://docs.google.com/document/d/10LNMiQnZnxRINp46LAQRpoNGfHNjz_KU8X2GeBREt6g/
 
 ## Contact
 If you have any questions, issues, or suggestions, contact the project maintainer:
-- - Email: [rachelgreenwood3301@gmail.com](mailto:rachelgreenwood3301@gmail.com)
+- Email: [rachelgreenwood3301@gmail.com](mailto:rachelgreenwood3301@gmail.com)
 - LinkedIn: [Rachel Greenwood](https://www.linkedin.com/in/rachel-greenwood3301/)
