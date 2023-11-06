@@ -55,7 +55,7 @@ button, nav {
 /* When answer button is hovered over */
 button:hover {
   background-color: #279EFF;
-  box-shadow: 0 3px 7px #337CCF;
+  box-shadow: 0 2px 6px #337CCF;
   border: 1px solid #141E46;
   border-radius: 6%;
 }
