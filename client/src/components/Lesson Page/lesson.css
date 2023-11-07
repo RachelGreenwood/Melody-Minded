@@ -19,7 +19,6 @@
 }
 
 .feedback-grid {
-    grid-column: 2;
     grid-row: 3;
     margin-top: -30px;
 }
