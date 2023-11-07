@@ -6,13 +6,13 @@ import './next.css';
 const Next = (props) => {
   // Gets number of total lessons
   const lessonsLength = [...new Set(props.lesson.map((lesson) => lesson.title))].length;
-  // Gets number of nnext lesson's id
+  // Gets number of next lesson's id
   const nextLessonId = parseInt(props.lessonId) + 1;
   
   return (
     <div>
         {/* If there are more lessons, link to next lesson */}
-        {nextLessonId === lessonsLength ? (
+        {nextLessonId <= lessonsLength ? (
         <button id='next'><Link className='link' to={`/lessons/${nextLessonId}`}>Next Lesson</Link></button>
       ) : (
         // If on the last lesson, link to forum page
