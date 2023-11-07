@@ -28,13 +28,11 @@ const Forum = () => {
         {comments.map((comment, index) => {
           return (
             <div key={index}>
-              {comment.poster}
-              {comment.comment}
+              <Comment comment={comment} />
             </div>
           )
         })}
         <AddComment />
-        <Comment />
     </div>
   );
 };
