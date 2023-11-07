@@ -6,26 +6,25 @@ import './navbar.css';
 
 // Navigate to different pages
 const Navbar = () => {
-    const [lessons_new, setLessons_New] = useState([]);
-
-    // Fetches data of all lessons
-    const loadLessons_New = () => {
-      fetch("/lessons_new")
-        .then((response) => response.json())
-        .then((lessons_new) => {
-          setLessons_New(lessons_new);
-        });
-    }
-
-      useEffect(() => {
-        loadLessons_New();
-      }, []);
-
-// Fixes the lesson duplication problem using a Set to filter out duplicates
-const uniqueTitles = [...new Set(lessons_new.map((lesson) => lesson.title))];
+  const [lessons_new, setLessons_New] = useState([]);
+  
+  // Fetches data of all lessons
+  const loadLessons_New = () => {
+    fetch("/lessons_new")
+      .then((response) => response.json())
+      .then((lessons_new) => {
+        setLessons_New(lessons_new);
+      });
+  }
+  
+  useEffect(() => {
+    loadLessons_New();
+  }, []);
+  
+  // Fixes the lesson duplication problem using a Set to filter out duplicates
+  const uniqueTitles = [...new Set(lessons_new.map((lesson) => lesson.title))];
 
   return (
-    <div>
         <nav>
           <img src={Logo} alt='Melody Minded logo'></img>
           <ul>
@@ -39,7 +38,6 @@ const uniqueTitles = [...new Set(lessons_new.map((lesson) => lesson.title))];
             <li><Link className='link' to="/forum"><div>Forum</div></Link></li>
           </ul>
         </nav>
-    </div>
   );
 };
 
