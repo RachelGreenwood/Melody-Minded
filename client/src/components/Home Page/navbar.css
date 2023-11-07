@@ -1,10 +1,8 @@
 /* Styles navbar */
 
 .navbar-grid {
-    grid-column: 1;
-    grid-row: 1;
     position: relative;
-  }
+}
 
 /* Makes navbar border go full page height */
 .navbar-grid:after {
@@ -16,7 +14,7 @@
     top: 0;
     background-color: #141E46;
     margin-right: 10px;
- }
+}
 
 nav {
     height: 100vh;
@@ -24,8 +22,6 @@ nav {
 }
 
 ul {
-    list-style-type: none;
-    color: #141E46;
     padding: 0;
 }
 
