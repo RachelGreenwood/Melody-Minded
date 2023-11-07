@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 
 // Lets user add a comment
 const AddComment = (props) => {
@@ -8,7 +8,8 @@ const AddComment = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = props.user.nickname;
-    const commentEvent = {poster: user, datetime: new Date(), comment: userComment.current?.value}
+    const avatar = props.user.picture;
+    const commentEvent = {poster: user, datetime: new Date(), comment: userComment.current?.value, avatar: avatar}
     handlePostRequest(commentEvent);
   }
 
