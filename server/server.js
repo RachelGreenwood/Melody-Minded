@@ -81,7 +81,8 @@ app.get('/comments', async (req, res) => {
 app.post("/comments", async (req, res) => {
   try {
     console.log("In the server", req.body);
-    const { poster, datetime, comment } = req.body;
+    const { poster, comment } = req.body;
+    const datetime = new Date();
     const result = await db.query(
       "INSERT INTO comments (poster, datetime, comment) VALUES ($1, $2, $3) RETURNING *",
         [poster, datetime, comment]
