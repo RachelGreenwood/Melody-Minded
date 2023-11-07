@@ -10,3 +10,7 @@ input {
 input:focus {
     outline: none;
 }
+
+button {
+    display: block;
+}
