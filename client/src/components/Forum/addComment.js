@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 // Lets user add a comment
 const AddComment = (props) => {
@@ -18,6 +18,10 @@ const AddComment = (props) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
+    .then(() => {
+      props.loadComments();
+    });
+    userComment.current.value = '';
   }
   
   return (
