@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="api/me" element={<Profile user={user}/>} />
           <Route path="lessons/:lessonId" element={<Lesson />} />
-          <Route path='/forum' element={<Forum />} />
+          <Route path='/forum' element={<Forum user={user} />} />
         </Routes>
       </div>
       <div className="last-column">

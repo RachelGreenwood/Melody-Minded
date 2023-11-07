@@ -3,7 +3,7 @@ import AddComment from './addComment';
 import Comment from './comment';
 
 // Full forum page
-const Forum = () => {
+const Forum = (props) => {
   // Holds all comments
   const [comments, setComments] = useState([]);
   let filtered = comments.filter((comment) => {
@@ -28,7 +28,7 @@ const Forum = () => {
   return (
     <div>
         <p>Forum is present</p>
-        <AddComment comments={comments} />
+        <AddComment comments={comments} user={props.user} />
         {/* Returns all comments and the user who posted it */}
         {sortedByDate.map((comment, index) => {
           return (

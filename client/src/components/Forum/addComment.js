@@ -3,13 +3,13 @@ import React, { useRef } from 'react';
 // Lets user add a comment
 const AddComment = (props) => {
   const userComment = useRef();
+  console.log(props);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = props.poster;
-    const commentEvent = {user: user, datetime: new Date(), comment: userComment.current?.value}
+    const user = props.user.nickname;
+    const commentEvent = {poster: user, datetime: new Date(), comment: userComment.current?.value}
     handlePostRequest(commentEvent);
-    console.log("In submit", commentEvent)
   }
 
   const handlePostRequest = (data) => {
