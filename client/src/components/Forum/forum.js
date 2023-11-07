@@ -6,6 +6,11 @@ import Comment from './comment';
 const Forum = () => {
   // Holds all comments
   const [comments, setComments] = useState([]);
+  let filtered = comments.filter((comment) => {
+    return comment.datetime;
+  });
+  // console.log(filtered);
+  const sortedByDate = filtered.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
 
   // Fetches all comments from /comments table
   const loadComments = () => {
@@ -25,7 +30,7 @@ const Forum = () => {
     <div>
         <p>Forum is present</p>
         {/* Returns all comments and the user who posted it */}
-        {comments.map((comment, index) => {
+        {sortedByDate.map((comment, index) => {
           return (
             <div key={index}>
               <Comment comment={comment} />
