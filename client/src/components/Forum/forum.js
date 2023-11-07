@@ -28,7 +28,7 @@ const Forum = (props) => {
 
   return (
     <div className='section-container'>
-        <p>Forum is present</p>
+        <h1>Forum</h1>
         <AddComment loadComments={loadComments} comments={comments} user={props.user} />
         {/* Returns all comments and the user who posted it */}
         {sortedByDate.map((comment, index) => {
