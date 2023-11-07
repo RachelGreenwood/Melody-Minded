@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddComment from './addComment';
 import Comment from './comment';
+import './forum.css';
 
 // Full forum page
 const Forum = (props) => {
@@ -26,7 +27,7 @@ const Forum = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className='section-container'>
         <p>Forum is present</p>
         <AddComment loadComments={loadComments} comments={comments} user={props.user} />
         {/* Returns all comments and the user who posted it */}

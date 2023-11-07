@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import './addComment.css';
 
 // Lets user add a comment
 const AddComment = (props) => {
@@ -28,6 +29,7 @@ const AddComment = (props) => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
+          <p>Add a Comment!</p>
           <input type='text' ref={userComment} required></input>
           <button type='submit'>Submit</button>
         </form>

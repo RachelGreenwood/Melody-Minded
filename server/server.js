@@ -81,11 +81,11 @@ app.get('/comments', async (req, res) => {
 app.post("/comments", async (req, res) => {
   try {
     console.log("In the server", req.body);
-    const { poster, comment } = req.body;
+    const { poster, comment, avatar } = req.body;
     const datetime = new Date();
     const result = await db.query(
-      "INSERT INTO comments (poster, datetime, comment) VALUES ($1, $2, $3) RETURNING *",
-        [poster, datetime, comment]
+      "INSERT INTO comments (poster, datetime, comment, avatar) VALUES ($1, $2, $3, $4) RETURNING *",
+        [poster, datetime, comment, avatar]
     );
     let dbResponse = result.rows[0];
     console.log(dbResponse);

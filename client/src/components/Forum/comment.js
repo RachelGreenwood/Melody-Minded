@@ -1,4 +1,5 @@
 import React from 'react';
+import './comment.css';
 
 // Each individual comment
 const Comment = (props) => {
@@ -15,7 +16,7 @@ const Comment = (props) => {
     : "";
   
   return (
-    <div>
+    <div className='each-comment'>
         <p>{comment.poster}</p>
         <img src={comment.avatar}></img>
         <p>{date}</p>
