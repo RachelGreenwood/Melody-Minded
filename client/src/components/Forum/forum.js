@@ -18,7 +18,6 @@ const Forum = () => {
       .then((response) => response.json())
       .then((comments) => {
         setComments(comments)
-        console.log(comments);
       });
   }
 
@@ -29,6 +28,7 @@ const Forum = () => {
   return (
     <div>
         <p>Forum is present</p>
+        <AddComment comments={comments} />
         {/* Returns all comments and the user who posted it */}
         {sortedByDate.map((comment, index) => {
           return (
@@ -37,7 +37,6 @@ const Forum = () => {
             </div>
           )
         })}
-        <AddComment />
     </div>
   );
 };
