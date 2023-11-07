@@ -6,3 +6,7 @@ input {
     padding-bottom: 100px;
     width:70%;
 }
+
+input:focus {
+    outline: none;
+}
