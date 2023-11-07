@@ -2,8 +2,11 @@
     display: grid;
     grid-template-columns: 3fr;
     gap: 20px;
-    border: 5px solid black;
     margin-right: 10px;
+}
+
+#test {
+    border: 5px solid black;
 }
 
 h1 {

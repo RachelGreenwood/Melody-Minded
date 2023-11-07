@@ -27,7 +27,7 @@ const Forum = (props) => {
   }, []);
 
   return (
-    <div className='section-container'>
+    <div id='test' className='section-container'>
         <h1>Forum</h1>
         <AddComment loadComments={loadComments} comments={comments} user={props.user} />
         {/* Returns all comments and the user who posted it */}
