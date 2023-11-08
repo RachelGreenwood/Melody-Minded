@@ -31,7 +31,7 @@ const AddComment = (props) => {
         <form onSubmit={handleSubmit}>
           <p>Add a Comment!</p>
           <input type='text' ref={userComment} required></input>
-          <button type='submit'>Submit</button>
+          <button className='submit' type='submit'>Submit</button>
         </form>
     </div>
   );
