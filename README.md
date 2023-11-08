@@ -30,6 +30,8 @@ Melody Minded is a music theory education web application to teach children ages
 ## Features
 - **Interactive Learning:** Learn through the program through quizzes
 - **Have the Lesson Read to You:** Click a button to have the text read to you by AI
+- **Create an Account:** Create an account and log in to add a post to the forum
+- **Interact with other Users:** Post on the forum and chat with other users
 
 ## Demo
 [Link to live demo](https://server-eavm.onrender.com)
@@ -52,8 +54,6 @@ To run the project locally, follow these steps:
 - Open your web browser and go to http://localhost:3000
 
 ## Future Features
-- Logging in/creating an account with Auth0
-- Forum for users to ask questions and connect with other users
 - A section for ages 0-5 to prepare them for the 5-15 curriculum, consisting of a series of recordings that gradually get more complex
 - An autoplay feature for the ages 0-5 section
 - If a user doesn’t answer all the questions correctly, they can reload the page and relearn the same concept with different quiz questions to test their understanding, not their memory
