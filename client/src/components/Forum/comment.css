@@ -4,6 +4,7 @@
     padding: 0 0px 0 20px;
     margin-bottom: 10px;
     width: 95%;
+    box-shadow: 10px 10px 1px rgb(166, 165, 165);
 }
 
 .timestamp {
