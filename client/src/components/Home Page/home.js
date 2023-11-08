@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import choir_concert from './choir_concert.jpeg';
+import choir2 from './choir2.jpeg';
+import choir3 from './choir3.jpeg';
 import './home.css';
 
 // Landing page
 const Home = () => {
+  const images = [choir_concert, choir2, choir3];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((currentImageIndex + 1) % images.length);
+  };
+
+  const previousImage = () => {
+    setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
+  };
+
   return (
     <div>
         <h1>Welcome to Melody Minded!</h1>
-        <img id='concert' src={choir_concert} alt='A photo of a choral concert'></img>
+        <div id='concert-photos'>
+        <button onClick={previousImage} className="arrow-button left-arrow">Previous</button>
+        <img className="concert" src={images[currentImageIndex]} alt="A photo of a choral concert" />
+        <button onClick={nextImage} className="arrow-button right-arrow">Next</button>
+        </div>
         <div id='mission'>
           <p>Melody Minded is a music theory education application for students ages 5-15 that uses quizzes to teach musical concepts.</p>
           <p>As a former Choir Director, I believe that music should be accessible to everyone, regardless of location, economic status, or skill level.</p>
