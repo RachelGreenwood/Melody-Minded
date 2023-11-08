@@ -1,5 +1,6 @@
 .each-comment {
-    border: 1px solid #141E46;
+    border: 0.1px solid #141e463a;
+    border-radius: 1%;
     background-color: white;
     padding: 0 0px 0 20px;
     margin-bottom: 10px;

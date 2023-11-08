@@ -1,5 +1,6 @@
 form {
-    border: 2px solid #141E46;
+    border: 1px solid #141E46;
+    border-radius: 1%;
     background: #279eff6d;
     padding: 0 0 10px 10px;
     width: 70%;
