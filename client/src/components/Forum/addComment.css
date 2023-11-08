@@ -6,6 +6,7 @@ input {
     padding-bottom: 100px;
     width:70%;
     font-family: 'Nunito', sans-serif;
+    font-size: 15px;
 }
 
 input:focus {
