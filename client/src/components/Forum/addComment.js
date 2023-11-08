@@ -29,7 +29,7 @@ const AddComment = (props) => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
-          <p>Add a Comment!</p>
+          <h3>Add a Comment!</h3>
           <input type='text' ref={userComment} required></input>
           <button className='submit' type='submit'>Submit</button>
         </form>
