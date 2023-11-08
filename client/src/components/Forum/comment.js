@@ -17,12 +17,14 @@ const Comment = (props) => {
   
   return (
     <div className='each-comment'>
-        <img className='avatars' src={comment.avatar} alt="User's avatar"></img>
-        <p className='poster'>{comment.poster}</p>
-        <p className='timestamp'>{date}</p>
+        <img className={comment.avatar ? 'avatars' : ''} src={comment.avatar} alt="User's avatar"></img>
+        <p className={comment.avatar ? 'poster' : ''}>{comment.poster}</p>
+        <p className={comment.avatar ? 'timestamp' : ''}>{date}</p>
         <p>{comment.comment}</p>
     </div>
   );
 };
 
 export default Comment;
+
+// return <button className={`answer-buttons ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>
