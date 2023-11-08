@@ -1,9 +1,13 @@
 #concert-photos {
     display: flex;
-    max-width: 400px;
-    min-width: 400px;
     align-items: center;
     margin-left: 25%;
+}
+
+.concert {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
 }
 
 #mission {
