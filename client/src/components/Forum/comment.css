@@ -1,3 +1,7 @@
 .each-comment {
     border: 5px solid green;
 }
+
+.timestamp {
+    font-size: 13px;
+}
