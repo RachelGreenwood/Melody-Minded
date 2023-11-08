@@ -1,7 +1,7 @@
 .each-comment {
     border: 1px solid #141E46;
     background-color: white;
-    padding: 0 10px;
+    padding: 0 10px 0 20px;
 }
 
 .timestamp {
@@ -13,6 +13,7 @@
 
 .avatars {
     width: 60px;
+    margin-left: -13px;
 }
 
 .poster {
