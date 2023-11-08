@@ -7,10 +7,13 @@ import './forum.css';
 const Forum = (props) => {
   // Holds all comments
   const [comments, setComments] = useState([]);
+
+  // Gets just the timestamps of the comments
   let filtered = comments.filter((comment) => {
     return comment.datetime;
   });
-  // console.log(filtered);
+
+  // Sorts comments by timestamp, with most recent comment at top of page
   const sortedByDate = filtered.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
 
   // Fetches all comments from /comments table
@@ -29,6 +32,7 @@ const Forum = (props) => {
   return (
     <div className='forum-container'>
         <h1>Forum</h1>
+        {/* Lets user add a comment */}
         <AddComment loadComments={loadComments} comments={comments} user={props.user} />
         {/* Returns all comments and the user who posted it */}
         {sortedByDate.map((comment, index) => {

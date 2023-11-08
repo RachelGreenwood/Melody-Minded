@@ -4,7 +4,7 @@ import './comment.css';
 // Each individual comment
 const Comment = (props) => {
   const { comment } = props;
-  console.log(comment.avatar);
+  // Sets timestamp as date and time in human-readable format
   const date = comment.datetime
     ? new Date(comment.datetime).toLocaleString(undefined, {
         year: 'numeric',
@@ -17,6 +17,7 @@ const Comment = (props) => {
   
   return (
     <div className='each-comment'>
+      {/* If the avatar has loaded, use specific styling for spacing, so page doesn't look weird if avatar doesn't load properly */}
         <img className={comment.avatar ? 'avatars' : ''} src={comment.avatar} alt="User's avatar"></img>
         <p className={comment.avatar ? 'poster' : ''}>{comment.poster}</p>
         <p className={comment.avatar ? 'timestamp' : ''}>{date}</p>
@@ -26,5 +27,3 @@ const Comment = (props) => {
 };
 
 export default Comment;
-
-// return <button className={`answer-buttons ${selectedAns === option ? 'selected' : ''}`} key={index} onClick={handleBtnClick}>{option}</button>

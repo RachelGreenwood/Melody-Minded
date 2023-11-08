@@ -4,8 +4,8 @@ import './addComment.css';
 // Lets user add a comment
 const AddComment = (props) => {
   const userComment = useRef();
-  console.log(props);
 
+  // Prepares data to go to back-end
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = props.user.nickname;
@@ -14,6 +14,7 @@ const AddComment = (props) => {
     handlePostRequest(commentEvent);
   }
 
+  // Sends comment data to back-end to post comment to forum page
   const handlePostRequest = (data) => {
     fetch("/comments", {
       method: "POST",
