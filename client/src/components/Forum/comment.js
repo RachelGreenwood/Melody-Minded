@@ -21,7 +21,7 @@ const Comment = (props) => {
         <img className={comment.avatar ? 'avatars' : ''} src={comment.avatar} alt="User's avatar"></img>
         <p className={comment.avatar ? 'poster' : ''}>{comment.poster}</p>
         <p className={comment.avatar ? 'timestamp' : ''}>{date}</p>
-        <p>{comment.comment}</p>
+        <p className='comment-text'>{comment.comment}</p>
     </div>
   );
 };

@@ -22,3 +22,7 @@
     display: block;
     margin: -45px 0 0 70px;
 }
+
+.comment-text {
+    padding-top: 10px
+}
