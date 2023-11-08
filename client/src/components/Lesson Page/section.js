@@ -17,8 +17,8 @@ const Section = (props) => {
   const paragraphs = bodyWithLineBreaks.split('\n');
 
   // Formats text to not send images to text-to-audio API
-  const conceptToAudio = paragraphs.join('').replace(/<img[^>]*>/g);
-  const questionToAudio = lesson.question.replace(/<img[^>]*>/g);
+  const conceptToAudio = paragraphs.join('').replace(/<img[^>]*>/g, "");
+  const questionToAudio = lesson.question.replace(/<img[^>]*>/g, "");
 
   // Gets random number using Fisher-Yates algorithm
   const shuffleArray = (arr) => {
