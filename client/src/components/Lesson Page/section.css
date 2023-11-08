@@ -37,6 +37,8 @@
 
 /* Puts feedback in right column */
 .feedback {
+    grid-column: 3;
+    grid-row: 1;
     font-family: 'Nanum Pen Script', cursive;
     font-size: 30px;
   }
