@@ -1,6 +1,7 @@
 .each-comment {
     border: 1px solid #141E46;
     background-color: white;
+    padding: 0 10px;
 }
 
 .timestamp {
