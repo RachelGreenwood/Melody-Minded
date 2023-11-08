@@ -23,6 +23,10 @@ img {
   color: #141E46;
 }
 
+.login {
+  min-width: 81px;
+}
+
 /* Aligns user info horizontally */
 .user-info {
   display: flex;
