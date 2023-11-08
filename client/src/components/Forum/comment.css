@@ -8,7 +8,7 @@
     font-size: 13px;
     display: inline;
     float: right;
-    margin-right: 10px;
+    margin: -50px 10px 0 0;
 }
 
 .avatars {
@@ -17,5 +17,6 @@
 }
 
 .poster {
-    display: inline;
+    display: block;
+    margin: -45px 0 0 70px;
 }
