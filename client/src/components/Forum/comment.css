@@ -5,8 +5,15 @@
 
 .timestamp {
     font-size: 13px;
+    display: inline;
+    float: right;
+    margin-right: 10px;
 }
 
 .avatars {
     width: 60px;
+}
+
+.poster {
+    display: inline;
 }
