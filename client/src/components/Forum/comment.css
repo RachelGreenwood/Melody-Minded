@@ -5,3 +5,7 @@
 .timestamp {
     font-size: 13px;
 }
+
+.avatar {
+    min-width: 60px;
+}

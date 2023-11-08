@@ -17,7 +17,7 @@ const Comment = (props) => {
   
   return (
     <div className='each-comment'>
-        <img src={comment.avatar} alt="User's avatar"></img>
+        <img className='avatar' src={comment.avatar} alt="User's avatar"></img>
         <p>{comment.poster}</p>
         <p className='timestamp'>{date}</p>
         <p>{comment.comment}</p>
