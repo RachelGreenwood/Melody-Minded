@@ -167,7 +167,7 @@ app.get('/lessons_new', async (req, res) => {
   ON
     concepts.lesson_id = lessons_new.id
   ORDER BY title, concept ASC`);
-  console.log("In the server, ", lessons);
+  // console.log("In the server, ", lessons);
   res.send(lessons);
   } catch(err) {
     console.log(err);
@@ -208,6 +208,28 @@ app.get('/lessons_new/:lessonId', async (req, res) => {
   } catch(err) {
     console.log(err);
     return res.status(400).json({err});
+  }
+});
+
+app.post('/api/me', cors(), async (req, res) => {
+  const newUser = {
+    username: req.body.nickname,
+    email: req.body.email,
+    photo: req.body.picture,
+    lessons_completed: 0
+    }
+  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+  const valuesEmail = [newUser.email]
+  const resultsEmail = await db.query(queryEmail, valuesEmail);
+  if (resultsEmail.rows[0]) {
+    console.log(`Thank you ${resultsEmail.rows[0].username} for coming back`)
+    res.status(200).end()
+  } else {
+    const query = 'INSERT INTO users(username, email, photo, lessons_completed) VALUES($1, $2, $3, $4) RETURNING *'
+    const values = [newUser.username, newUser.email, newUser.photo, newUser.lessons_completed]
+    const result = await db.query(query, values);
+    console.log(result.rows[0]);
+    res.status(201).end();
   }
 });
 
