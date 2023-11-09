@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import './addComment.css';
 
-const AddComment = () => {
+// Lets user add a comment
+const AddComment = (props) => {
+  const userComment = useRef();
+
+  // Prepares data to go to back-end
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = props.user.nickname;
+    const avatar = props.user.picture;
+    const commentEvent = {poster: user, datetime: new Date(), comment: userComment.current?.value, avatar: avatar}
+    handlePostRequest(commentEvent);
+  }
+
+  // Sends comment data to back-end to post comment to forum page
+  const handlePostRequest = (data) => {
+    fetch("/comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    .then(() => {
+      props.loadComments();
+    });
+    userComment.current.value = '';
+  }
+  
   return (
     <div>
-        <p>AddComment is present</p>
+        <form onSubmit={handleSubmit}>
+          <h3>Add a Comment!</h3>
+          <input type='text' ref={userComment} required></input>
+          <button className='submit' type='submit'>Submit</button>
+        </form>
     </div>
   );
 };

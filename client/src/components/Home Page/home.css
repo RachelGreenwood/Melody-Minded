@@ -1,0 +1,16 @@
+#concert-photos {
+    display: flex;
+    align-items: center;
+    margin-left: 25%;
+}
+
+.concert {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+#mission {
+    text-align: justify;
+    margin-right: 40px;
+}

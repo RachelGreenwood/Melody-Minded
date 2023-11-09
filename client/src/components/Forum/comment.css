@@ -1,0 +1,30 @@
+.each-comment {
+    border: 0.1px solid #141e463a;
+    border-radius: 1%;
+    background-color: white;
+    padding: 0 0px 0 20px;
+    margin-bottom: 10px;
+    width: 95%;
+    box-shadow: 10px 10px 8px rgb(166, 165, 165);
+}
+
+.timestamp {
+    font-size: 13px;
+    display: inline;
+    float: right;
+    margin: -50px 10px 0 0;
+}
+
+.avatars {
+    width: 60px;
+    margin-left: -13px;
+}
+
+.poster {
+    display: block;
+    margin: -45px 0 0 70px;
+}
+
+.comment-text {
+    padding-top: 10px
+}

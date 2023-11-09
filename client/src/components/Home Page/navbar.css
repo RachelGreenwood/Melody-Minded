@@ -1,0 +1,31 @@
+/* Styles navbar */
+
+.navbar-grid {
+    position: relative;
+}
+
+/* Makes navbar border go full page height */
+.navbar-grid:after {
+    content: '';
+    height: 100%;
+    width: 2px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #141E46;
+    margin-right: 10px;
+}
+
+nav {
+    height: 100vh;
+    margin-right: 10px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    border-bottom: solid 2px #141E46;
+    padding: 10px;
+}

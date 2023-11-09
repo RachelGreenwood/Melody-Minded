@@ -64,6 +64,7 @@ app.post("/users", async (req, res) => {
     res.status(400).json({err});
   }
 });
+
 // Gets data from comments table
 app.get('/comments', async (req, res) => {
   try {
@@ -80,10 +81,11 @@ app.get('/comments', async (req, res) => {
 app.post("/comments", async (req, res) => {
   try {
     console.log("In the server", req.body);
-    const { poster, datetime, comment } = req.body;
+    const { poster, comment, avatar } = req.body;
+    const datetime = new Date();
     const result = await db.query(
-      "INSERT INTO comments (poster, datetime, comment) VALUES ($1, $2, $3) RETURNING *",
-        [poster, datetime, comment]
+      "INSERT INTO comments (poster, datetime, comment, avatar) VALUES ($1, $2, $3, $4) RETURNING *",
+        [poster, datetime, comment, avatar]
     );
     let dbResponse = result.rows[0];
     console.log(dbResponse);
@@ -140,6 +142,7 @@ app.get('/lessons', async (req, res) => {
   }
 });
 
+// Fetches lessons data from lessons_new table
 app.get('/lessons_new', async (req, res) => {
   try {
     const { rows: lessons } = await db.query(`SELECT
@@ -172,6 +175,7 @@ app.get('/lessons_new', async (req, res) => {
   }
 });
 
+// Fetches a particular lesson from the lessons_new table
 app.get('/lessons_new/:lessonId', async (req, res) => {
   try {
     const { lessonId } = req.params;

@@ -1,0 +1,29 @@
+/* Styles lesson page */
+
+.lesson-grid {
+    grid-column: 2 / span 2;
+    grid-row: 1;
+    /* Justifies text */
+    text-align: justify;
+}
+  
+.last-column {
+    grid-column: 3;
+    grid-row: 1;
+}
+  
+.section-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+.feedback-grid {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: -30px;
+}
+
+p {
+    font-size: 18px;
+  }

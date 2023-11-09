@@ -1,124 +1,65 @@
+/* Root styling file */
+
 body {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   color: #141E46;
   background-color: #F2F7FF;
 }
 
+/* Splits page into navbar, content, and feedback column */
 .container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: auto;
-  align-content: start;
-}
-
-.navbar-grid {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row: 1;
-}
-
-.lesson-grid {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row: 1;
-}
-
-.section-container {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 20px;
- }
-
-.main-content {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.answer-buttons {
-  grid-column: 1;
-  grid-row: 3;
-}
-
-.feedback-grid {
-  grid-column: 2;
-  grid-row: 3;
-  margin-top: -30px;
 }
 
 img {
-  max-width: 85%;
+  max-width: 90%;
+  padding: 10px;
+}
+
+/* Styles navbar, login, and next links */
+.link {
+  text-decoration: none;
+  color: #141E46;
+}
+
+.login {
+  min-width: 81px;
+}
+
+/* Aligns user info horizontally */
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right:10px;
+  margin-top: 10px;
+}
+
+.auth {
+  padding-right: 10px;
+}
+
+.avatar {
+  max-width: 2.5rem;
 }
 
 button, nav {
-  font-family: 'Nunito';
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
 }
 
-nav {
-  height: 100vh;
-  border-right: 2px solid #141E46;
-  margin-right: 20px;
+/* Styles loading image */
+.spinner img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-ul {
-  list-style-type: none;
-  color: #141E46;
-  /* position: fixed; */
-}
-
+/* When answer button is hovered over */
 button:hover {
   background-color: #279EFF;
-}
-
-.button.selected {
-  background-color: #337CCF;
-  color: white;
-}
-
-p {
-  font-size: 18px;
-}
-
-.feedback {
-  font-family: 'Nanum Pen Script';
-  font-size: 30px;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  box-shadow: 0 2px 6px #337CCF;
+  border: 1px solid #141E46;
+  border-radius: 6%;
 }
