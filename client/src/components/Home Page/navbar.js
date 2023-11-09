@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from 'client/src/Logo.png';
+import Logo from '../../Logo.png';
 import './navbar.css';
 
 // Navigate to different pages
