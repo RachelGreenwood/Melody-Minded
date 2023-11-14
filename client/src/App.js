@@ -8,6 +8,7 @@ import Navbar from './components/Home Page/navbar.js';
 import Lesson from './components/Lesson Page/lesson.js';
 import Forum from "./components/Forum/forum";
 import Home from "./components/Home Page/home";
+import TokenHandler from "./components/Authentication/tokenHandler.js";
 
 function App() {
   // Loading symbol
@@ -21,6 +22,7 @@ function App() {
   return (
     <div className="container d-flex flex-column h-100">
       <div className="navbar-grid">
+        <TokenHandler />
         <Navbar />
       </div>
       <div className="lesson-grid">
