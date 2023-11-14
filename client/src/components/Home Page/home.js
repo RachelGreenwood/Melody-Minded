@@ -22,9 +22,9 @@ const Home = () => {
         <h1>Welcome to Melody Minded!</h1>
         <div id='concert-photos'>
           {/* When one of the buttons is clicked, show previous or next image in the array */}
-          <i onClick={previousImage} className="arrow-button left-arrow" class="fa-solid fa-caret-left fa-2xl"></i>
+          <i onClick={previousImage} className="arrow-button left-arrow" className="fa-solid fa-caret-left fa-2xl"></i>
           <img className="concert" src={images[ImageIndex]} alt="A photo of a choral concert" />
-          <i onClick={nextImage} className="arrow-button right-arrow" class="fa-solid fa-caret-right fa-2xl"></i>
+          <i onClick={nextImage} className="arrow-button right-arrow" className="fa-solid fa-caret-right fa-2xl"></i>
         </div>
         <div id='mission'>
           <p>Melody Minded is a music theory education application for students ages 5-15 that uses quizzes to teach musical concepts.</p>
