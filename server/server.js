@@ -233,6 +233,17 @@ app.post('/api/me', cors(), async (req, res) => {
   }
 });
 
+app.post('/token', (req, res) => {
+  try {
+    console.log("In the server, ", req.body);
+    const { accessToken, idToken } = req.body;
+    res.status(200).json({ accessToken, idToken, message: "OK" });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ err });
+  }
+});
+
 // Shows server is running
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
