@@ -44,6 +44,9 @@ To run the project locally, follow these steps:
 - cd Melody-Minded
 
 2. **Install dependencies:**
+- cd client
+- npm install
+- cd server
 - npm install
 
 3. **Start the application:**
